@@ -9,14 +9,14 @@ against spatial frequencies.\cr As mentionned in Sidick2009, this function calcu
 PSD against spatial frequencies in 1D from \code{\link{PSD2DAgainstFrequency}} by using
 breaks in the log space to sum PSD 2D and frequency values.}
 \usage{
-PSD1DAgainstFrequency(AFMImage, breaks)
+PSD1DAgainstFrequency(AFMImage, AFMImagePSDAnalysis)
 
-\S4method{PSD1DAgainstFrequency}{AFMImage}(AFMImage, breaks)
+\S4method{PSD1DAgainstFrequency}{AFMImage}(AFMImage, AFMImagePSDAnalysis)
 }
 \arguments{
 \item{AFMImage}{an \code{AFMImage} to be analysed}
 
-\item{breaks}{the number of breaks in the log space of PSD 2D. e.g.: breaks=32 for 1000nm scansize}
+\item{AFMImagePSDAnalysis}{n \code{AFMImagePSDAnalysis} to store the setup and results of PSD analysis}
 }
 \value{
 \code{PSD1DAgainstFrequency} returns a data table of frequencies and PSD values

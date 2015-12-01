@@ -4,13 +4,12 @@
 \alias{calculateOmnidirectionalVariogram}
 \title{Calculate experimental omnidirectional semi-variogram}
 \usage{
-calculateOmnidirectionalVariogram(AFMImage, width)
+calculateOmnidirectionalVariogram(AFMImageVariogramAnalysis, AFMImage)
 }
 \arguments{
-\item{AFMImage}{an \code{\link{AFMImage}} from Atomic Force Microscopy}
+\item{AFMImageVariogramAnalysis}{an \code{\link{AFMImageVariogramAnalysis}} to manage and store the result of variogram analysis}
 
-\item{width}{(optional) a distance step for the calculation of the variograms
-(e.g.: width=  integer of (scan Size divided by number of lines)= ceil(1000 / 512) for AFMImageOfAluminiumInterface}
+\item{AFMImage}{an \code{\link{AFMImage}} from Atomic Force Microscopy}
 }
 \value{
 the semivariance calculated in all the directions
@@ -27,7 +26,9 @@ library(AFM)
 library(ggplot2)
 
 data(AFMImageOfRegularPeaks)
-avario<-AFM::calculateOmnidirectionalVariogram(AFMImageOfRegularPeaks)
+variogramAnalysis<-AFMImageVariogramAnalysis(sampleFitPercentage=3.43)
+avario<-AFM::calculateOmnidirectionalVariogram(AFMImageVariogramAnalysis= variogramAnalysis,
+                                               AFMImage= AFMImageOfRegularPeaks)
 dist<-gamma<-NULL
 p <- ggplot(avario, aes(x=dist, y=gamma))
 p <- p + geom_point()

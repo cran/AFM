@@ -6,12 +6,14 @@
 \alias{PSD2DAgainstFrequency,AFMImage-method}
 \title{Calculate the 2D Power Spectral Density}
 \usage{
-PSD2DAgainstFrequency(AFMImage)
+PSD2DAgainstFrequency(AFMImage, AFMImagePSDAnalysis)
 
-\S4method{PSD2DAgainstFrequency}{AFMImage}(AFMImage)
+\S4method{PSD2DAgainstFrequency}{AFMImage}(AFMImage, AFMImagePSDAnalysis)
 }
 \arguments{
 \item{AFMImage}{an \code{AFMImage} to be analysed}
+
+\item{AFMImagePSDAnalysis}{an \code{AFMImagePSDAnalysis} to store PSD analysis results}
 }
 \value{
 \code{PSD2DAgainstFrequency} returns a data table of frequencies and PSD values

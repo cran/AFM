@@ -34,10 +34,14 @@ AFMImage@fullfilename<-paste(tempdir(), "AFMImageOfRegularPeaks-extract.txt", se
 AFMImageAnalyser<-AFMImageAnalyser(AFMImage)
 
  # Variogram analysis
-sampleSizePercentage<-3.43/100
-variogramAnalysis<-AFMImageVariogramAnalysis(sampleSizePercentage)
-variogramAnalysis@omnidirectionalVariogram<- AFM::calculateOmnidirectionalVariogram(AFMImage)
-variogramAnalysis@directionalVariograms<- AFM::calculateDirectionalVariograms(AFMImage)
+sampleFitPercentage<-3.43/100
+variogramAnalysis<-AFMImageVariogramAnalysis(sampleFitPercentage)
+variogramAnalysis@omnidirectionalVariogram<-
+              AFM::calculateOmnidirectionalVariogram(AFMImage=AFMImage,
+                                                     AFMImageVariogramAnalysis=variogramAnalysis)
+variogramAnalysis@directionalVariograms<-
+              AFM::calculateDirectionalVariograms(AFMImage=AFMImage,
+                                                 AFMImageVariogramAnalysis=variogramAnalysis)
 
 # manage model evaluations
 AFMImageVariogram<-variogramAnalysis@omnidirectionalVariogram

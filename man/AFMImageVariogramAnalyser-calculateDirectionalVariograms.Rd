@@ -4,13 +4,12 @@
 \alias{calculateDirectionalVariograms}
 \title{Calculate experimental directional semi-variograms}
 \usage{
-calculateDirectionalVariograms(AFMImage, width)
+calculateDirectionalVariograms(AFMImageVariogramAnalysis, AFMImage)
 }
 \arguments{
-\item{AFMImage}{an \code{\link{AFMImage}} from Atomic Force Microscopy}
+\item{AFMImageVariogramAnalysis}{an \code{\link{AFMImageVariogramAnalysis}} to manage and store the result of variogram analysis}
 
-\item{width}{(optional) a distance step for the calculation of the variograms
-(e.g.: width=  integer of (scan Size divided by number of lines)= ceil(1000 / 512) for AFMImageOfAluminiumInterface}
+\item{AFMImage}{an \code{\link{AFMImage}} from Atomic Force Microscopy}
 }
 \value{
 Four directional variograms
@@ -29,7 +28,9 @@ library(AFM)
 library(ggplot2)
 
 data(AFMImageOfRegularPeaks)
-varios<-AFM::calculateDirectionalVariograms(AFMImageOfRegularPeaks, 1)
+variogramAnalysis<-AFMImageVariogramAnalysis(sampleFitPercentage=3.43)
+varios<-AFM::calculateDirectionalVariograms(AFMImage= AFMImageOfRegularPeaks,
+                                            AFMImageVariogramAnalysis= variogramAnalysis)
 dist<-gamma<-NULL
 p <- ggplot(varios, aes(x=dist, y=gamma,
                         color= as.factor(dir.hor),

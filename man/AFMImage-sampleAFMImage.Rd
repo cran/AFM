@@ -28,7 +28,9 @@ library(ggplot2)
 
 data(AFMImageOfAluminiumInterface)
 anAFMImageSample<-sampleAFMImage(AFMImageOfAluminiumInterface,15)
-avario<-AFM::calculateOmnidirectionalVariogram(anAFMImageSample, 2)
+variogramAnalysis<-AFMImageVariogramAnalysis(sampleFitPercentage=3.43)
+avario<-AFM::calculateOmnidirectionalVariogram(AFMImage= anAFMImageSample,
+                                               AFMImageVariogramAnalysis= variogramAnalysis)
 dist<-gamma<-NULL
 p1 <- ggplot(avario, aes(x=dist, y=gamma))
 p1 <- p1 + geom_point()

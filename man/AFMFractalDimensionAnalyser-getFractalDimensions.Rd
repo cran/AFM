@@ -4,13 +4,15 @@
 \alias{getFractalDimensions}
 \title{Calculate 2D fractal dimensions and scales of an AFM Image}
 \usage{
-getFractalDimensions(AFMImage)
+getFractalDimensions(AFMImage, AFMImageFractalDimensionsAnalysis)
 }
 \arguments{
 \item{AFMImage}{an \code{\link{AFMImage}} from Atomic Force Microscopy}
+
+\item{AFMImageFractalDimensionsAnalysis}{an \code{\link{AFMImageFractalDimensionsAnalysis}} to store the results of the fractal analysis}
 }
 \value{
-a data.table with the calculated fractal dimensions and scales
+a list of \code{\link{AFMImageFractalDimensionMethod}} objects with the calculated fractal dimensions and scales
 }
 \description{
 \code{getFractalDimensions} calculates fractal dimensions and scales of an \code{\link{AFMImage}} with \code{\link[fractaldim]{fd.estim.method}} from the \code{\link{fractaldim}} package.

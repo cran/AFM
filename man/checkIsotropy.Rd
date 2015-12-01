@@ -4,10 +4,12 @@
 \alias{checkIsotropy}
 \title{Check the isotropy of a sample}
 \usage{
-checkIsotropy(AFMImage)
+checkIsotropy(AFMImage, AFMImageAnalyser)
 }
 \arguments{
 \item{AFMImage}{an \code{\link{AFMImage}} to be analysed}
+
+\item{AFMImageAnalyser}{an \code{\link{AFMImageAnalyser}} to perform the analysis}
 }
 \value{
 an \code{\link{AFMImageAnalyser}} containing the directional variograms
@@ -23,7 +25,8 @@ library(ggplot2)
 
 data(AFMImageOfAluminiumInterface)
 AFMImage<-extractAFMImage(AFMImageOfAluminiumInterface, 0, 0, 32)
-AFMImageAnalyser<-checkIsotropy(AFMImage)
+AFMImageAnalyser<-new("AFMImageAnalyser", AFMImage= AFMImage, fullfilename = AFMImage@fullfilename)
+AFMImageAnalyser<-checkIsotropy(AFMImage,AFMImageAnalyser)
 varios<-AFMImageAnalyser@variogramAnalysis@directionalVariograms
 p2 <- ggplot(varios, aes(x=dist, y=gamma,
                          color= as.factor(dir.hor), shape=as.factor(dir.hor)))

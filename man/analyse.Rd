@@ -4,10 +4,10 @@
 \alias{analyse}
 \title{Analyse an AFMImage}
 \usage{
-analyse(AFMImage)
+analyse(AFMImageAnalyser)
 }
 \arguments{
-\item{AFMImage}{the \code{\link{AFMImage}} to be analysed}
+\item{AFMImageAnalyser}{a \code{\link{AFMImageAnalyser}} to manage and store image analysis}
 }
 \value{
 an \code{\link{AFMImageAnalyser}} containing all the analysis
@@ -26,8 +26,9 @@ library(AFM)
 
 data(AFMImageOfAluminiumInterface)
 AFMImage<-extractAFMImage(AFMImageOfAluminiumInterface, 0, 0, 32)
-myAFMImageAnalyser<-analyse(AFMImage)
-print(myAFMImageAnalyser@fdAnalysis)
+AFMImageAnalyser<-new("AFMImageAnalyser", AFMImage= AFMImage, fullfilename = AFMImage@fullfilename)
+AFMImageAnalyser<-analyse(AFMImageAnalyser)
+print(AFMImageAnalyser@fdAnalysis)
 }
 \author{
 M.Beauvais

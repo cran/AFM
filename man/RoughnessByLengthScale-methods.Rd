@@ -6,17 +6,14 @@
 \alias{RoughnessByLengthScale,AFMImage-method}
 \title{Calculate the roughness of the sample against length scale}
 \usage{
-RoughnessByLengthScale(AFMImage, truncHighLengthScale, maxHighLengthScale)
+RoughnessByLengthScale(AFMImage, AFMImagePSDAnalysis)
 
-\S4method{RoughnessByLengthScale}{AFMImage}(AFMImage, truncHighLengthScale,
-  maxHighLengthScale)
+\S4method{RoughnessByLengthScale}{AFMImage}(AFMImage, AFMImagePSDAnalysis)
 }
 \arguments{
 \item{AFMImage}{an \code{\link{AFMImage}} from Atomic Force Microscopy}
 
-\item{truncHighLengthScale}{TRUE if lengthscale should be limited to the minimum between vertical and horizontal scan size}
-
-\item{maxHighLengthScale}{a lengthscale value inferior to the nyquist frequency. If this value is higher than the Nyquist frequency, it will be replaced by the later.}
+\item{AFMImagePSDAnalysis}{n \code{AFMImagePSDAnalysis} to store the setup and results of PSD analysis}
 }
 \value{
 a data table of lenght scale (r) and roughness values (roughness)
@@ -36,7 +33,8 @@ library(ggplot2)
 
 data("AFMImageOfNormallyDistributedHeights")
 oneAFMImage<-AFMImageOfNormallyDistributedHeights
-data<-RoughnessByLengthScale(oneAFMImage)
+AFMImagePSDAnalysis<-AFMImagePSDAnalysis()
+data<-RoughnessByLengthScale(oneAFMImage, AFMImagePSDAnalysis)
 r<-roughness<-filename<-NULL
 p1 <- ggplot(data, aes(x=r, y=roughness, colour= basename(filename)))
 p1 <- p1 + geom_point()

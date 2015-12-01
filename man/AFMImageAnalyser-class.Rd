@@ -20,6 +20,8 @@ Wrapper function AFMImageAnalyser
 \section{Slots}{
 
 \describe{
+\item{\code{AFMImage}}{\code{\link{AFMImage}} to be analysed}
+
 \item{\code{variogramAnalysis}}{\code{\link{AFMImageVariogramAnalysis}}}
 
 \item{\code{psdAnalysis}}{\code{\link{AFMImagePSDAnalysis}}}
@@ -35,6 +37,8 @@ Wrapper function AFMImageAnalyser
 \item{\code{Ra}}{mean roughness or mean of absolute values of heights}
 
 \item{\code{fullfilename}}{to be removed ?}
+
+\item{\code{updateProgress}}{a function to update a graphical user interface}
 }}
 \author{
 M.Beauvais

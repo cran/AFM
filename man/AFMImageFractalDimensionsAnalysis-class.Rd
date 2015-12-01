@@ -44,6 +44,8 @@ Method \code{fractalDimensionMethods} returns a list of FractalDimensionMethod o
 \item{\code{fractalDimensionMethods}}{a list of \code{\link{AFMImageFractalDimensionMethod}}}
 
 \item{\code{csvFullfilename}}{To be removed ?}
+
+\item{\code{updateProgress}}{a function to update a graphical user interface}
 }}
 \author{
 M.Beauvais

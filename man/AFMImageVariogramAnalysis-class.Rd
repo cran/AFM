@@ -13,11 +13,12 @@
 \alias{variogramModels,AFMImageVariogramAnalysis-method}
 \title{AFM image variogram analysis class}
 \usage{
-AFMImageVariogramAnalysis(sampleSizePercentage)
+AFMImageVariogramAnalysis(sampleFitPercentage)
 
-\S4method{initialize}{AFMImageVariogramAnalysis}(.Object, sampleSizePercentage)
+\S4method{initialize}{AFMImageVariogramAnalysis}(.Object, sampleFitPercentage,
+  updateProgress)
 
-AFMImageVariogramAnalysis(sampleSizePercentage)
+AFMImageVariogramAnalysis(sampleFitPercentage)
 
 variogramModels(object)
 
@@ -32,9 +33,11 @@ directionalVariograms(object)
 \S4method{directionalVariograms}{AFMImageVariogramAnalysis}(object)
 }
 \arguments{
-\item{sampleSizePercentage}{a sample size as a percentage (e.g. "5" for 5 percents) of random points in the \code{\link{AFMImage}}. These points will be used to fit the variogram models.}
+\item{sampleFitPercentage}{a sample size as a percentage (e.g. "5" for 5 percents) of random points in the \code{\link{AFMImage}}. These points will be used to fit the variogram models.}
 
 \item{.Object}{an AFMImageVariogramAnalysis class}
+
+\item{updateProgress}{a function to update a graphical user interface}
 
 \item{object}{a \code{AFMImageVariogramAnalysis} object}
 }
@@ -54,19 +57,24 @@ Method \code{directionalVariograms} returns the directional variograms
 \section{Slots}{
 
 \describe{
+\item{\code{width}}{(optional) a distance step for the calculation of the variograms
+(e.g.: width=  integer of (scan Size divided by number of lines)= ceil(1000 / 512) for AFMImageOfAluminiumInterface}
+
 \item{\code{omnidirectionalVariogram}}{a data.table to store the omnidirectional variogram}
 
 \item{\code{directionalVariograms}}{a data.table to store the directional variograms}
 
-\item{\code{sampleSizePercentage}}{a sample size as a percentage of random points in the \code{\link{AFMImage}}. These points will be used to fit the variogram models.}
+\item{\code{sampleFitPercentage}}{a sample size as a percentage of random points in the \code{\link{AFMImage}}. These points will be used to fit the variogram models.}
 
-\item{\code{chosenSample}}{the chosen random points  of the \code{\link{AFMImage}} to perform the fitting of the variogram models.}
+\item{\code{chosenFitSample}}{the chosen random points  of the \code{\link{AFMImage}} to perform the fitting of the variogram models.}
 
 \item{\code{cuts}}{the cuts for spplot of the \code{\link{AFMImage}}. The same cuts will be used for the predicted \code{\link{AFMImage}}}
 
 \item{\code{variogramModels}}{A list of \code{\link{AFMImageVariogramModel}} containing the various evaluated variogram models.}
 
-\item{\code{csvFullfilename}}{to be removed ?}
+\item{\code{fullfilename}}{to be removed ?}
+
+\item{\code{updateProgress}}{a function to update a graphical user interface}
 }}
 \author{
 M.Beauvais

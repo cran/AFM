@@ -4,10 +4,12 @@
 \alias{generateAFMImageReport}
 \title{Generate an analysis report from an AFMImageAnalyser object}
 \usage{
-generateAFMImageReport(oneAFMImageAnalyserFile, isCheckReport)
+generateAFMImageReport(AFMImageAnalyser, reportFullfilename, isCheckReport)
 }
 \arguments{
-\item{oneAFMImageAnalyserFile}{an \code{\link{AFMImageAnalyser}} to be used to produce report}
+\item{AFMImageAnalyser}{an \code{\link{AFMImageAnalyser}} to be used to produce report}
+
+\item{reportFullfilename}{location on disk where to save the generated report}
 
 \item{isCheckReport}{TRUE to generate a check report must be generated, FALSE to generate a full report}
 }

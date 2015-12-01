@@ -5,11 +5,13 @@
 \alias{initialize,AFMImageAnalyser-method}
 \title{Constructor method of AFMImageAnalyser Class.}
 \usage{
-\S4method{initialize}{AFMImageAnalyser}(.Object, variogramAnalysis, psdAnalysis,
-  fdAnalysis, mean, variance, TotalRrms, Ra, fullfilename)
+\S4method{initialize}{AFMImageAnalyser}(.Object, AFMImage, variogramAnalysis,
+  psdAnalysis, fdAnalysis, mean, variance, TotalRrms, Ra, fullfilename)
 }
 \arguments{
 \item{.Object}{an AFMImageAnalyser object}
+
+\item{AFMImage}{an \code{AFMImage}}
 
 \item{variogramAnalysis}{\code{\link{AFMImageVariogramAnalysis}}}
 

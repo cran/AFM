@@ -7,6 +7,16 @@
 \alias{initialize,AFMImagePSDAnalysis-method}
 \alias{intersections}
 \alias{intersections,AFMImagePSDAnalysis-method}
+\alias{psd1d}
+\alias{psd1d,AFMImagePSDAnalysis-method}
+\alias{psd1d_breaks}
+\alias{psd1d_breaks,AFMImagePSDAnalysis-method}
+\alias{psd2d}
+\alias{psd2d,AFMImagePSDAnalysis-method}
+\alias{psd2d_maxHighLengthScale}
+\alias{psd2d_maxHighLengthScale,AFMImagePSDAnalysis-method}
+\alias{psd2d_truncHighLengthScale}
+\alias{psd2d_truncHighLengthScale,AFMImagePSDAnalysis-method}
 \alias{roughnessAgainstLengthscale}
 \alias{roughnessAgainstLengthscale,AFMImagePSDAnalysis-method}
 \title{AFM image Power Spectrum Density analysis class}
@@ -16,6 +26,26 @@ AFMImagePSDAnalysis()
 \S4method{initialize}{AFMImagePSDAnalysis}(.Object)
 
 AFMImagePSDAnalysis()
+
+psd1d_breaks(object)
+
+\S4method{psd1d_breaks}{AFMImagePSDAnalysis}(object)
+
+psd2d_maxHighLengthScale(object)
+
+\S4method{psd2d_maxHighLengthScale}{AFMImagePSDAnalysis}(object)
+
+psd2d_truncHighLengthScale(object)
+
+\S4method{psd2d_truncHighLengthScale}{AFMImagePSDAnalysis}(object)
+
+psd1d(object)
+
+\S4method{psd1d}{AFMImagePSDAnalysis}(object)
+
+psd2d(object)
+
+\S4method{psd2d}{AFMImagePSDAnalysis}(object)
 
 roughnessAgainstLengthscale(object)
 
@@ -37,7 +67,17 @@ Constructor method of AFMImagePSDAnalysis Class.
 
 Wrapper function AFMImagePSDAnalysis
 
-Method \code{roughnessAgainstLengthscale} returns a data.table of roughness vs. Lengthscale
+Method \code{psd1d_breaks} returns a number of breaks to calculate PSD1D from PSD2D
+
+Method \code{psd2d_maxHighLengthScale} returns the maximum lengthscale to be managed by PSD2D
+
+Method \code{psd2d_truncHighLengthScale} returns if the lengthscale of PSD2D should be truncated
+
+Method \code{psd1d} returns a data.table of psd in 1D
+
+Method \code{psd2d} returns a data.table of psd in 1D
+
+Method \code{roughnessAgainstLengthscale} returns a data.table of roughnesses versus lengthscale
 
 Method \code{intersections} returns a intersection numeric value
 }
@@ -47,6 +87,8 @@ Method \code{intersections} returns a intersection numeric value
 \item{\code{roughnessAgainstLengthscale}}{a data.table to store the roughness against lengthscale data}
 
 \item{\code{intersections}}{a list to store the lengthscales values as the intersections between slopes and the sill in roughness against lenghscale graph}
+
+\item{\code{updateProgress}}{a function to update a graphical user interface}
 }}
 \author{
 M.Beauvais
