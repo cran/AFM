@@ -3,7 +3,6 @@ require("pracma")
 require("data.table")
 
 require("gstat")
-require("geoR")
 require(sp)
 
 
@@ -545,6 +544,7 @@ setMethod(f="evaluateVariogramModels", "AFMImageVariogramAnalysis",
 
 
 #' @title updateProgress
+#' @description is a function used by a GUI such as shiny GUI
 #' @name updateProgress
 #' @aliases updateProgress updateProgress,AFMImageVariogramAnalysis-method
 #' @docType methods

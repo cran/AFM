@@ -3,9 +3,12 @@
 #' The AFM package provides statistics analysis tools for Atomic Force Microscopy image analysis.\cr
 #' Licence: Affero GPL v3
 #' 
+#' A graphical user interface is available by using \code{\link{runAFMApp}} command.
+#' 
 #' Several high level functions are :
 #' \itemize{
-#'   \item import your image from Nanoscope Analysis (TM) tool (\code{\link{importFromNanoscope}}) or from a list of measured  heights (examples of \code{\link{AFMImage}})
+#'   \item create your AFM image from a list of measured  heights (see example section of \code{\link{AFMImage}})
+#'   \item import your image from Nanoscope Analysis (TM) tool (\code{\link{importFromNanoscope}}) 
 #'   \item check if your sample is normally distributed and isotropic and get a pdf report (\code{\link{generateCheckReport}})
 #'   \item perform variance (variogram), roughness against lengthscale, fractal analysis and get a pdf report (\code{\link{generateReport}})
 #' }
@@ -19,6 +22,8 @@
 #'   \item calculate fractal dimension and scale: use (\code{\link{getFractalDimensions}}) function
 #'   \item print in 3D (3D print) (\code{\link{exportToSTL}}) your AFM image
 #' }
+#' 
+#' An EC2 instance is available for basic testing at the following address: \url{http://www.afmist.org}
 #' 
 #' Note: To use with a Brucker(TM) Atomic Force Microscope, use nanoscope analysis(TM) software and
 #' \itemize{
@@ -52,22 +57,26 @@
 #' @docType package
 #' @name AFM
 #' @import data.table
-#' @import stringr
 #' @import gstat
-#' @import fractaldim
 #' @import rgl
-#' @import pracma
-#' @import fftwtools
-#' @import geoR
-#' @import grid
-#' @import gridExtra
-#' @import moments
 #' @import ggplot2
 #' @import sp
 #' @import png
 #' @import plyr
 #' @import methods
+#' @import igraph
+#' @import methods
+#' @importFrom fftwtools fftw2d
+#' @importFrom fractaldim fd.estim.filter1 fd.estim.isotropic fd.estim.squareincr fd.estim.transect.incr1 fd.estim.transect.var
+#' @importFrom grid grid.layout grid.newpage grid.text pushViewport viewport gpar grid.raster
+#' @importFrom gridExtra tableGrob ttheme_default
 #' @importFrom grDevices blues9 dev.off heat.colors pdf png
+#' @importFrom moments skewness
+#' @importFrom pracma ceil meshgrid
+#' @importFrom rglwidget renderRglwidget rglwidget sceneChange registerSceneChange rglwidgetOutput
+#' @importFrom shiny actionButton downloadButton downloadHandler fileInput h3 hr htmlOutput HTML imageOutput isolate mainPanel navbarMenu navbarPage observeEvent plotOutput radioButtons reactive reactiveValues renderImage renderPlot renderTable renderUI shinyServer shinyUI sidebarLayout sidebarPanel sliderInput tableOutput tabPanel updateSliderInput uiOutput
+#' @importFrom shinyjs disable enable useShinyjs
 #' @importFrom stats coefficients cor dist dnorm lm na.omit sd var
+#' @importFrom stringr str_sub str_replace_all
 #' @importFrom utils head installed.packages read.table tail write.table
 NULL
