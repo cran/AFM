@@ -323,11 +323,11 @@ gridIgraphPlot<-function(AFMImage, g){
   l<-cbind(l, coordinatesVector$y)
   #l
   
-  # plot(all, layout=All_layout, vertex.size=2, vertex.label=V(All)$name,
+  # plot.igraph(all, layout=All_layout, vertex.size=2, vertex.label=V(All)$name,
   #      vertex.color="green", vertex.frame.color="red", edge.color="grey",  
   #      edge.arrow.size=0.01, rescale=TRUE,vertex.label=NA, vertex.label.dist=0.0,
   #      vertex.label.cex=0.5, add=FALSE,   vertex.label.font=.001)
-  plot(g, layout=l, 
+  plot.igraph(g, layout=l, 
        vertex.shape="circle", vertex.size=2, vertex.label=NA, vertex.color="red", vertex.frame.color="red",
        edge.color="grey"
   )
@@ -658,4 +658,199 @@ getTopologyAFMImage<-function(BinaryAFMImage, AFMImageNetworksAnalysis){
   
   return(topologyAFMImage)
   
+}
+
+#' get a segment of points thanks to Bresenham line algorithm
+#'
+#' \code{getBresenham2DSegment} return the Bresenham segment in 2D from extremities coordinates
+#' 
+#' @param x1 abscissa coordinates of the first point
+#' @param y1 ordinate coordinates of the first point
+#' @param x2 abscissa coordinates of the second point
+#' @param y2 ordinate coordinates of the second point
+#' 
+#' @author M.Beauvais
+#' @export
+
+getBresenham2DSegment<-function(x1, y1, x2, y2) {
+  resX=c()
+  resY=c()
+  
+  dx<-x2-x1
+  dy<-y2-y1
+  
+  #print(paste("getBresenham2DSegment",dx,dy))
+  
+  if (dx !=0) {
+    if (dx > 0) {
+      if (dy !=0) {
+        if (dy > 0) {
+          if (dx >= dy) {
+            e<-dx
+            dx <- e  * 2 
+            dy <- dy * 2  
+            while(TRUE){  
+              resX=c(resX,x1); resY=c(resY, y1)
+              x1 <- x1 + 1
+              if (x1 == x2) break
+              e <- e - dy
+              if (e < 0) {
+                y1 <- y1 + 1
+                e <- e + dx 
+              }
+            }
+          } else {
+            e <- dy
+            dy <- e * 2
+            dx <- dx * 2 
+            while(TRUE){ 
+              resX=c(resX,x1); resY=c(resY, y1)
+              y1 <- y1 + 1
+              if (y1 == y2) break
+              e <- e - dx
+              if (e < 0) {
+                x1 <- x1 + 1 
+                e <- e + dy
+              }
+            }
+          }
+        }else if (dy < 0){ # dy < 0 (et dx > 0)
+          
+          
+          if (dx >= -dy) {
+            
+            e <- dx
+            dx <- e * 2
+            dy <- dy * 2
+            
+            while(TRUE){  
+              resX=c(resX,x1); resY=c(resY, y1)
+              x1 <- x1 + 1
+              if (x1 == x2) break
+              e <- e + dy
+              if (e < 0) {
+                y1 <- y1 - 1 
+                e <- e + dx
+              }
+            }
+          } else{
+            
+            e <- dy
+            dy <- e * 2 
+            dx <- dx * 2
+            while(TRUE){  
+              resX=c(resX,x1); resY=c(resY, y1)
+              y1 <- y1 - 1
+              if (y1 == y2) break
+              e <- e - dx
+              if (e > 0) {
+                x1 <- x1 + 1
+                e <- e - dy
+              }
+            }
+          }
+          
+        }
+      }  else if (dy == 0){ # dy = 0 (et dx > 0)
+        while(x1 != x2) {
+          resX=c(resX,x1); resY=c(resY, y1) 
+          x1 <- x1 + 1
+        }
+      }
+    }else if (dx<0) {  # dx < 0
+      dy <- y2 - y1
+      if (dy != 0) {
+        if (dy > 0) {
+          if (-dx >= dy) {
+            e <- dx
+            dx <- e * 2 
+            dy <- dy * 2  
+            while(TRUE){
+              resX=c(resX,x1); resY=c(resY, y1) 
+              x1 <- x1 - 1
+              if (x1 == x2) break
+              e <- e + dy
+              if (e >= 0) {
+                y1 <- y1 + 1 
+                e <- e + dx 
+              }
+            }
+          }else{
+            e <- dy
+            dy <- e * 2
+            dx <- dx * 2 
+            while(TRUE){ 
+              resX=c(resX,x1); resY=c(resY, y1) 
+              y1 <- y1 + 1
+              if ( y1 == y2) break 
+              e <- e + dx
+              if (e <= 0) {
+                x1 <- x1 - 1  
+                e <- e + dy 
+              }
+            }
+          }
+        }else if(dy <0) {  # dy < 0 (et dx < 0)
+          if (dx <= dy) {
+            e <- dx
+            dx <- e * 2 
+            dy <- dy * 2  
+            while(TRUE){  
+              resX=c(resX,x1); resY=c(resY, y1)
+              x1 <- x1 - 1
+              if (x1 == x2) break
+              e <- e - dy
+              if (e >= 0) {
+                y1 <- y1 - 1
+                e <- e + dx 
+              }
+            }
+          } else { 
+            e <- dy
+            dy <- e * 2 
+            dx <- dx * 2 
+            
+            while(TRUE){
+              resX=c(resX,x1); resY=c(resY, y1)
+              y1 <- y1 - 1
+              if ( y1 == y2 ) break
+              e <- e - dx
+              if (e >= 0) {
+                x1 <- x1 - 1
+                e <- e + dy
+              }
+            }
+          }
+        } 
+      } else if (dy==0) {  # dy = 0 (et dx < 0)
+        while(x1!=x2) {
+          resX=c(resX,x1); resY=c(resY, y1)
+          x1 <- x1 - 1
+        }
+      }
+    }
+  } else if (dx==0) {  # dx = 0
+    dy <- y2 - y1
+    if (dy != 0) {
+      if (dy > 0) {
+        while(y1 != y2) {
+          resX=c(resX,x1); resY=c(resY, y1)
+          y1 <- y1 + 1
+        } 
+        
+      } else if (dy < 0) { # dy < 0 (et dx = 0)
+        while(y1!=y2) {
+          resX=c(resX,x1); resY=c(resY, y1)
+          y1 <- y1 - 1
+        }
+        
+      }
+      
+    }
+    
+  }
+  resX=c(resX,x2); resY=c(resY, y2)
+  pts = data.table(x=resX, y=resY)
+  
+  return(pts)
 }

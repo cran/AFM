@@ -1,7 +1,7 @@
 Package: AFM
 Type: Package
-Version: 1.2.0
-Date: 2016-02-23
+Version: 1.2.1
+Date: 2016-04-10
 Title: Atomic Force Microscope Image Analysis
 Authors@R: c(person("Mathieu", "Beauvais", role = c("aut", "cre"), email = "beauvais.escp@gmail.com"),person("Irma", "Liascukiene", role = "aut"),person("Jessem", "Landoulsi", role = "aut"))
 Author: Mathieu Beauvais [aut, cre],
@@ -27,5 +27,5 @@ Collate: 'AFM3DPrinter.R' 'AFMFractalDimensionAnalyser.R' 'AFMImage.R'
         'AFMVariogramAnalyser.R' 'AFMImageAnalyser.R'
         'AFMReportMaker.R' 'pkgname.R' 'runAFMApp.R'
 RoxygenNote: 5.0.1
-Packaged: 2016-02-26 20:36:25 UTC; nobody
-Date/Publication: 2016-02-26 23:23:53
+Packaged: 2016-04-11 17:39:43 UTC; nobody
+Date/Publication: 2016-04-12 00:57:04

@@ -39,21 +39,31 @@ library(AFM)
 library(ggplot2)
 library(plyr)
 library(scales)
-
-# Calculate the Power Spectral Density in one dimension
 data("AFMImageOfNormallyDistributedHeights")
-oneAFMImage<-AFMImageOfNormallyDistributedHeights
-# using 32 breaks in the log space to calculate PSD 1D from PSD 2D
-psd1d<-PSD1DAgainstFrequency(oneAFMImage, 32)
-p <- ggplot(data=psd1d)
-p <- p + geom_point(aes(freq, PSD, color=type),subset = .(type \%in\% c("PSD-2D")))
-p <- p + geom_line(aes(freq, PSD, color=type),subset = .(type \%in\% c("PSD-1D")),size=1.1)
+ newAFMImage<-AFMImageOfNormallyDistributedHeights
+newAFMImage@fullfilename<-"C:/Users/one/AFMImageOfNormallyDistributedHeights.txt"
+psdAnalysis<-AFMImagePSDAnalysis()
+# Create a closure to update progress
+psdAnalysis@updateProgress<- function(value = NULL, detail = NULL, message = NULL) {
+  if (exists("progressPSD")){
+   if (!is.null(message)) {
+     progressPSD$set(message = message, value = 0)
+   }else{
+     progressPSD$set(value = value, detail = detail)
+   }
+  }
+}
+psdAnalysis@psd1d_breaks<-2^3
+psdAnalysis@psd2d_truncHighLengthScale<-TRUE
+psdAnalysis<-performAllPSDCalculation(AFMImagePSDAnalysis= psdAnalysis, AFMImage= newAFMImage)
+datap<-psdAnalysis@psd1d
+p <- ggplot(data=datap)
+p <- p + geom_point(aes(freq, PSD, color=type),data=datap[datap$type \%in\% c("PSD-2D")])
+p <- p + geom_line(aes(freq, PSD, color=type),data=datap[datap$type \%in\% c("PSD-1D")],size=1.1)
 p <- p + scale_x_log10()
-p <- p + scale_y_log10(  breaks = trans_breaks("log10", function(x) 10^x), 
-                        labels = trans_format("log10", math_format(10^.x)))
+p <- p + scale_y_log10()
 p <- p + ylab("PSD (nm^4)")
 p <- p + xlab("Frequency (nm^-1)")
-p <- p + ggtitle(basename(oneAFMImage@fullfilename))
 p
 }
 }

@@ -15,10 +15,29 @@ performAllPSDCalculation(AFMImagePSDAnalysis, AFMImage)
 \code{\link{performAllPSDCalculation}} perform all the calculation for PSD exploitation
 }
 \examples{
+\dontrun{
 library(AFM)
 
 data(AFMImageOfNormallyDistributedHeights)
 
+newAFMImage<-AFMImageOfNormallyDistributedHeights
+newAFMImage@fullfilename<-"C:/Users/one/AFMImageOfNormallyDistributedHeights.txt"
+psdAnalysis<-AFMImagePSDAnalysis()
+# Create a closure to update progress
+psdAnalysis@updateProgress<- function(value = NULL, detail = NULL, message = NULL) {
+  if (exists("progressPSD")){
+    if (!is.null(message)) {
+      progressPSD$set(message = message, value = 0)
+    }else{
+      progressPSD$set(value = value, detail = detail)
+    }
+  }
+}
+psdAnalysis@psd1d_breaks<-2^3
+psdAnalysis@psd2d_truncHighLengthScale<-TRUE
+psdAnalysis<-performAllPSDCalculation(AFMImagePSDAnalysis= psdAnalysis, AFMImage= newAFMImage)
+print("done psdAnalysis")
+}
 }
 \author{
 M.Beauvais
