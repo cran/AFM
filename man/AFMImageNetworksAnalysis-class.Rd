@@ -9,24 +9,42 @@
 \usage{
 AFMImageNetworksAnalysis()
 
-\S4method{initialize}{AFMImageNetworksAnalysis}(.Object, originalGraph,
-  skeletonGraph, heightNetworksslider, filterNetworkssliderMin,
-  filterNetworkssliderMax, libVersion)
+\S4method{initialize}{AFMImageNetworksAnalysis}(.Object, binaryAFMImage,
+  binaryAFMImageWithCircles, circlesTable, edgesTable,
+  fusionedNodesCorrespondance, fusionedNodesEdgesTable, isolatedNodesList,
+  heightNetworksslider, filterNetworkssliderMin, filterNetworkssliderMax,
+  originalGraph, skeletonGraph, shortestPaths, libVersion)
 
 AFMImageNetworksAnalysis()
 }
 \arguments{
 \item{.Object}{an AFMImageNetworksAnalysis Class}
 
-\item{originalGraph}{a list of \code{\link{igraph}}}
+\item{binaryAFMImage}{the AFMImage after transformation before analysis}
 
-\item{skeletonGraph}{a list of \code{\link{igraph}}}
+\item{binaryAFMImageWithCircles}{the AFMImage after transformation with the spotted circles}
+
+\item{circlesTable}{a data.table of identified circles}
+
+\item{edgesTable}{a data.table of edges}
+
+\item{fusionedNodesCorrespondance}{a data.table of correspon}
+
+\item{fusionedNodesEdgesTable}{a data.table of corresponsdance between intial node and fusioned node}
+
+\item{isolatedNodesList}{a data.table of isolated nodes}
 
 \item{heightNetworksslider}{used multiplier of heights to facilitate analysis}
 
 \item{filterNetworkssliderMin}{used filter minimum value to facilitate analysis}
 
 \item{filterNetworkssliderMax}{used filter maximum value to facilitate analysis}
+
+\item{originalGraph}{a list of \code{\link{igraph}}}
+
+\item{skeletonGraph}{a list of \code{\link{igraph}}}
+
+\item{shortestPaths}{a data.table of shortest path}
 
 \item{libVersion}{version of the AFM library used to perform the analysis}
 }
@@ -40,15 +58,31 @@ Wrapper function AFMImageNetworksAnalysis
 \section{Slots}{
 
 \describe{
-\item{\code{originalGraph}}{a list of \code{\link{igraph}}}
+\item{\code{binaryAFMImage}}{the AFMImage after transformation before analysis}
 
-\item{\code{skeletonGraph}}{a list of \code{\link{igraph}}}
+\item{\code{binaryAFMImageWithCircles}}{the AFMImage after transformation with the spotted circles}
+
+\item{\code{circlesTable}}{a data.table of identified circles}
+
+\item{\code{edgesTable}}{a data.table of edges}
+
+\item{\code{fusionedNodesCorrespondance}}{a data.table of corresponsdance between intial node and fusioned node}
+
+\item{\code{fusionedNodesEdgesTable}}{a data.table of nodes fusioned because of intersecting}
+
+\item{\code{isolatedNodesTable}}{a data.table of isolated nodes}
 
 \item{\code{heightNetworksslider}}{used multiplier of heights to facilitate analysis}
 
 \item{\code{filterNetworkssliderMin}}{used filter minimum value to facilitate analysis}
 
 \item{\code{filterNetworkssliderMax}}{used filter maximum value to facilitate analysis}
+
+\item{\code{originalGraph}}{a list of \code{\link{igraph}}}
+
+\item{\code{skeletonGraph}}{a list of \code{\link{igraph}}}
+
+\item{\code{shortestPaths}}{a data.table of shortest paths}
 
 \item{\code{libVersion}}{version of the AFM library used to perform the analysis}
 

@@ -1,7 +1,6 @@
 require(shiny)
 library(AFM)
 library(rgl)
-library(rglwidget)
 library(tools)
 library(data.table)
 library(xtable)
@@ -31,26 +30,27 @@ HEADLESS<-FALSE
 
 testHEADLESS<-function() {
   
-  result = tryCatch({
-    open3d()
-  }, warning = function(w) {
-    print("warning rgl.open()")
-    HEADLESS<-TRUE
-  }, error = function(e) {
-    print("error rgl.open()")
-    HEADLESS<-TRUE
-  }, finally = {
-    if (!HEADLESS) rgl.close()
-    print("finally rgl.open()")
-  })
+  # result = tryCatch({
+  #   open3d()
+  # }, warning = function(w) {
+  #   print("warning rgl.open()")
+  #   HEADLESS<-TRUE
+  # }, error = function(e) {
+  #   print("error rgl.open()")
+  #   HEADLESS<-TRUE
+  # }, finally = {
+  #   if (!HEADLESS) rgl.close()
+  #   print("finally rgl.open()")
+  # })
+  HEADLESS<-TRUE
+  if (interactive()) HEADLESS<-FALSE
   
 }
 
-testHEADLESS()
+#testHEADLESS()
 #HEADLESS<-TRUE
 print(paste("HEADLESS is", HEADLESS))
 print(paste("interactive() is", interactive()))
-
 
 #Do not open rgl windows with headless shiny server
 if (HEADLESS) {
@@ -1439,6 +1439,16 @@ shinyServer(function(input, output, session) {
     #print(imageName)
   })
   
+  output$smallBranchesNetworksNetworksCheckboxInput<-renderUI({
+    imageName<-displayImageName()
+    
+    if (is.null(imageName)) {
+      output$imageNameNetworks<-renderUI(HTML(c("<h4>please select image first</h4>")))
+      return(NULL)
+    }
+    checkboxInput("smallBranchesNetworksNetworksCheckboxInput", "Small branches")
+  })
+  
   
   output$distNetworksPlot <- renderPlot({
     
@@ -1477,9 +1487,7 @@ shinyServer(function(input, output, session) {
       if (is.null(v$AFMImageAnalyser)) {
         return()
       }
-      
-      
-      
+
       newAFMImage<-v$AFMImageAnalyser@AFMImage
       
       heights<-newAFMImage@data$h*input$heightNetworksslider
@@ -1489,10 +1497,7 @@ shinyServer(function(input, output, session) {
       heights[heights>input$filterNetworksslider[2]]<-0
       
       newAFMImage@data$h<-heights
-      
-      
-      
-      
+
       getSpplotFromAFMImage(newAFMImage, expectedWidth=512, expectHeight= 512, withoutLegend=TRUE)
     }
   })
@@ -1537,9 +1542,10 @@ shinyServer(function(input, output, session) {
         print("calculation of Networks")
         
         #createAFMImageAnalyser()
-        networkAnalysis<-new ("AFMImageNetworksAnalysis")
+        AFMImageNetworksAnalysis = new("AFMImageNetworksAnalysis")
+        
         # Create a closure to update progress
-        networkAnalysis@updateProgress<- function(value = NULL, detail = NULL, message = NULL) {
+        AFMImageNetworksAnalysis@updateProgress<- function(value = NULL, detail = NULL, message = NULL) {
           if (!is.null(message)) {
             progressCalculateNetworks$set(message = message, value = 0)
           }else{
@@ -1547,35 +1553,67 @@ shinyServer(function(input, output, session) {
           }
           return(TRUE)
         }
-        networkAnalysis@updateProgress(message="Calculating networks", value=0)
         
         
+        # newAFMImage<-copy(v$AFMImageAnalyser@AFMImage)
+        # 
+        # newAFMImage<-extractAFMImage(newAFMImage,0,0,184)
+        # 
+        # heights<-newAFMImage@data$h*input$heightNetworksslider
+        # heights<-heights+abs(min(heights))
+        # 
+        # heights[heights<input$filterNetworksslider[1]]<-0
+        # heights[heights>input$filterNetworksslider[2]]<-0
+        # 
+        # newAFMImage@data$h<-heights
+        # 
+        # 
+        # networkAnalysis@heightNetworksslider=input$heightNetworksslider
+        # networkAnalysis@filterNetworkssliderMin=input$filterNetworksslider[1]
+        # networkAnalysis@filterNetworkssliderMax=input$filterNetworksslider[2]
+        # 
+        # if(!is.null(v$AFMImageAnalyser@AFMImage)) {
+        #   print("Calculating networks")
+        #   networksAna<-calculateNetworks(AFMImageNetworksAnalysis= networkAnalysis, AFMImage= newAFMImage)
+        # }
         
         newAFMImage<-copy(v$AFMImageAnalyser@AFMImage)
-        
-        newAFMImage<-extractAFMImage(newAFMImage,0,0,184)
-        
-        heights<-newAFMImage@data$h*input$heightNetworksslider
-        heights<-heights+abs(min(heights))
-        
-        heights[heights<input$filterNetworksslider[1]]<-0
-        heights[heights>input$filterNetworksslider[2]]<-0
-        
-        newAFMImage@data$h<-heights
+        #newAFMImage<-extractAFMImage(newAFMImage,0,0,80)
+
+        AFMImageNetworksAnalysis@heightNetworksslider=input$heightNetworksslider
+        AFMImageNetworksAnalysis@filterNetworkssliderMin=input$filterNetworksslider[1]
+        AFMImageNetworksAnalysis@filterNetworkssliderMax=input$filterNetworksslider[2]
         
         
-        networkAnalysis@heightNetworksslider=input$heightNetworksslider
-        networkAnalysis@filterNetworkssliderMin=input$filterNetworksslider[1]
-        networkAnalysis@filterNetworkssliderMax=input$filterNetworksslider[2]
+        AFMImageNetworksAnalysis@updateProgress(message="Transform image", value=0)
+        AFMImageNetworksAnalysis@updateProgress(value= 0, detail = "1/8")
+        
+        AFMImageNetworksAnalysis<-transformAFMImageForNetworkAnalysis(AFMImageNetworksAnalysis, 
+                                                                      AFMImage= newAFMImage)
+        newAFMImage<-AFMImageNetworksAnalysis@binaryAFMImage
+        displayIn3D(newAFMImage)
         
         if(!is.null(v$AFMImageAnalyser@AFMImage)) {
           print("Calculating networks")
-          networksAna<-calculateNetworks(AFMImageNetworksAnalysis= networkAnalysis, AFMImage= newAFMImage)
+          AFMImageNetworksAnalysis@updateProgress(message="Identify nodes", value=0)
+          AFMImageNetworksAnalysis@updateProgress(value= 0, detail = "2/8")
+          AFMImageNetworksAnalysis<-identifyNodesWithCircles(AFMImageNetworksAnalysis= AFMImageNetworksAnalysis,
+                                                             smallBranchesTreatment = input$smallBranchesNetworksNetworksCheckboxInput)
+          AFMImageNetworksAnalysis@updateProgress(message="Identify edges", value=3/8)
+          AFMImageNetworksAnalysis<-identifyEdgesFromCircles(AFMImageNetworksAnalysis= AFMImageNetworksAnalysis)
+          AFMImageNetworksAnalysis@updateProgress(message="Identify isolated nodes", value=4/8)
+          AFMImageNetworksAnalysis<-identifyIsolatedNodes(AFMImageNetworksAnalysis)
+          AFMImageNetworksAnalysis@updateProgress(message="Fusion intersecting nodes", value=5/8)
+          AFMImageNetworksAnalysis<-fusionCloseNodes(AFMImageNetworksAnalysis)
+          AFMImageNetworksAnalysis@updateProgress(message="Create networks", value=6/8)
+          AFMImageNetworksAnalysis<-createGraph(AFMImageNetworksAnalysis)
+          AFMImageNetworksAnalysis@updateProgress(message="Calculate shortest path", value=7/8)
+          AFMImageNetworksAnalysis<-calculateShortestPaths(AFMImageNetworksAnalysis)
         }
-        
+
         print("calculation of networks done")
-        v$AFMImageAnalyser@networksAnalysis<-networksAna
-        print("done v$AFMImageAnalyser@networksAnalysis<-networksAna")
+        v$AFMImageAnalyser@networksAnalysis<-AFMImageNetworksAnalysis
+        print("done v$AFMImageAnalyser@networksAnalysis<-AFMImageNetworksAnalysis")
       })
     }
     

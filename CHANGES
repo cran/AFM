@@ -1,3 +1,9 @@
+1.2.2
+added NEWS file
+Bug correction
+Added slope analysis in Variograms and Power Spectral Density
+Added support of network analysis - draft version
+
 1.2.1
 new sp import for OSX version
 modification for ggplot2 v2

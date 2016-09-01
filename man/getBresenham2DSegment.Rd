@@ -15,6 +15,9 @@ getBresenham2DSegment(x1, y1, x2, y2)
 
 \item{y2}{ordinate coordinates of the second point}
 }
+\value{
+a data.table of points - data.table(x, y)
+}
 \description{
 \code{getBresenham2DSegment} return the Bresenham segment in 2D from extremities coordinates
 }

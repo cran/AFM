@@ -13,7 +13,7 @@ extractAFMImage(AFMImage, cornerX, cornerY, size)
 
 \item{cornerY}{vertical coordinates of the extract}
 
-\item{size}{square size of the extract}
+\item{size}{square size of the extract in number of pixels}
 }
 \value{
 a new  \code{\link{AFMImage}} sample

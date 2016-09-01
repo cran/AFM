@@ -2,7 +2,14 @@
 % Please edit documentation in R/AFMNetworksAnalyser.R
 \name{getNetworkGridLayout}
 \alias{getNetworkGridLayout}
-\title{Get getNetworkGridLayout}
+\title{#' @export
+getCoordinatesFromVertexId2<-function(AFMImage, vId) {
+  vertexId<-as.numeric(vId)
+  y<-floor(vertexId/HASHSIZE)
+  x<-vertexId-y*HASHSIZE
+  return(data.table(vId=vId, coords.x1=x,coords.x2=y))
+}
+Get getNetworkGridLayout}
 \usage{
 getNetworkGridLayout(AFMImage, vId)
 }

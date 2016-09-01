@@ -28,7 +28,7 @@ library(AFM)
 library(ggplot2)
 
 data(AFMImageOfRegularPeaks)
-variogramAnalysis<-AFMImageVariogramAnalysis(sampleFitPercentage=3.43)
+variogramAnalysis<-AFMImageVariogramAnalysis(sampleFitPercentage=3.43/100)
 varios<-AFM::calculateDirectionalVariograms(AFMImage= AFMImageOfRegularPeaks, 
                                             AFMImageVariogramAnalysis= variogramAnalysis)
 dist<-gamma<-NULL

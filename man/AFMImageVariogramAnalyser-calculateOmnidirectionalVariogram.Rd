@@ -26,7 +26,7 @@ library(AFM)
 library(ggplot2)
 
 data(AFMImageOfRegularPeaks)
-variogramAnalysis<-AFMImageVariogramAnalysis(sampleFitPercentage=3.43)
+variogramAnalysis<-AFMImageVariogramAnalysis(sampleFitPercentage=3.43/100)
 avario<-AFM::calculateOmnidirectionalVariogram(AFMImageVariogramAnalysis= variogramAnalysis, 
                                                AFMImage= AFMImageOfRegularPeaks)
 dist<-gamma<-NULL
