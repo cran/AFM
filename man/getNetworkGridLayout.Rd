@@ -24,4 +24,3 @@ getNetworkGridLayout(AFMImage, vId)
 \author{
 M.Beauvais
 }
-

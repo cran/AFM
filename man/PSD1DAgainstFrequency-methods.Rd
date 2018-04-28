@@ -67,4 +67,3 @@ p <- p + xlab("Frequency (nm^-1)")
 p
 }
 }
-

@@ -4,11 +4,9 @@
 \alias{getCoordinatesFromVertexId}
 \title{Get x,y coordinates from vertex id}
 \usage{
-getCoordinatesFromVertexId(AFMImage, vId)
+getCoordinatesFromVertexId(vId)
 }
 \arguments{
-\item{AFMImage}{an \code{\link{AFMImage}} from Atomic Force Microscopy}
-
 \item{vId}{the vertex id}
 }
 \description{
@@ -17,4 +15,3 @@ getCoordinatesFromVertexId(AFMImage, vId)
 \author{
 M.Beauvais
 }
-

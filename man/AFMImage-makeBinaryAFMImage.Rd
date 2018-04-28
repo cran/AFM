@@ -18,4 +18,3 @@ an \code{\link{AFMImage}}
 \author{
 M.Beauvais
 }
-

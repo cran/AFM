@@ -3,8 +3,8 @@
 \docType{methods}
 \name{calculateNetworks}
 \alias{calculateNetworks}
-\alias{calculateNetworks,AFMImage-method}
 \alias{calculateNetworks,AFMImageNetworksAnalysis-method}
+\alias{calculateNetworks,AFMImage-method}
 \title{Calculate networks on the surface}
 \usage{
 calculateNetworks(AFMImageNetworksAnalysis, AFMImage)
@@ -24,4 +24,3 @@ calculateNetworks(AFMImageNetworksAnalysis, AFMImage)
 \author{
 M.Beauvais
 }
-

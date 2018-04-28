@@ -4,7 +4,7 @@
 \alias{displayIn3D}
 \title{Display a 3D image of an AFMImage and store it on disk.}
 \usage{
-displayIn3D(AFMImage, width, fullfilename, changeViewpoint)
+displayIn3D(AFMImage, width, fullfilename, changeViewpoint, noLight)
 }
 \arguments{
 \item{AFMImage}{the AFM image to be displayed in three dimensions.}
@@ -14,25 +14,13 @@ displayIn3D(AFMImage, width, fullfilename, changeViewpoint)
 \item{fullfilename}{(optional) the directory and filename to save the png of the 3D image. If this variable is missing, the function will not save on disk the 3D image.}
 
 \item{changeViewpoint}{(optional) if TRUE, the viewpoint is changed. Default is TRUE.}
+
+\item{noLight}{if TRUE, the ligth is set off}
 }
 \description{
 Display a 3D image of an AFMImage and store it on disk if fullfilename variable is set.
 It uses the \code{\link{rgl}} package.
 }
-\examples{
-library(AFM)
-
-data(AFMImageOfAluminiumInterface)
-newAFMImage<-extractAFMImage(AFMImageOfAluminiumInterface, cornerX=50, cornerY=50, size=256)
-displayIn3D(newAFMImage, 1024)
-
-\dontrun{
-AFMImage<-importFromNanoscope("/user/ubuntu/myNanoscopeAnalysisAFMImage.txt")
-displayIn3D(AFMImage, 1024, "/users/ubuntu/myRglAFMimage.png")
-}
-
-}
 \author{
 M.Beauvais
 }
-

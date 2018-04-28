@@ -20,4 +20,3 @@ updateProgress(AFMImageVariogramAnalysis, value, detail, message)
 \description{
 is a function used by a GUI such as shiny GUI
 }
-

@@ -25,4 +25,3 @@ check if all the angles between one edge and a list of edges is superior to a sp
 \author{
 M.Beauvais
 }
-

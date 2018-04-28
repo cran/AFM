@@ -15,4 +15,3 @@ display the network of nodes and edges
 \author{
 M.Beauvais
 }
-

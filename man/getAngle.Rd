@@ -20,4 +20,3 @@ calculate the angle between two vectors
 \author{
 M.Beauvais
 }
-

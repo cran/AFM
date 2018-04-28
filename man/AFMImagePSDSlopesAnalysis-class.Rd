@@ -2,9 +2,10 @@
 % Please edit documentation in R/AFMPSDAnalyser.R
 \docType{methods}
 \name{AFMImagePSDSlopesAnalysis-class}
-\alias{AFMImagePSDSlopesAnalysis}
 \alias{AFMImagePSDSlopesAnalysis-class}
+\alias{AFMImagePSDSlopesAnalysis}
 \alias{initialize,AFMImagePSDSlopesAnalysis-method}
+\alias{AFMImagePSDSlopesAnalysis}
 \title{AFM Image psd slope analysis}
 \usage{
 AFMImagePSDSlopesAnalysis()
@@ -34,7 +35,7 @@ Wrapper function AFMImagePSDSlopesAnalysis
 
 \item{\code{yintersept}}{to be removed ?}
 }}
+
 \author{
 M.Beauvais
 }
-

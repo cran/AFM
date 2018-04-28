@@ -2,9 +2,10 @@
 % Please edit documentation in R/AFMImage.R
 \docType{methods}
 \name{AFMImage-class}
-\alias{AFMImage}
 \alias{AFMImage-class}
+\alias{AFMImage}
 \alias{initialize,AFMImage-method}
+\alias{AFMImage}
 \title{AFM image class}
 \usage{
 AFMImage(data, samplesperline, lines, hscansize, vscansize, scansize,
@@ -57,6 +58,7 @@ Wrapper function AFMImage
 
 \item{\code{fullfilename}}{directory and filename on the disk (e.g.: /users/ubuntu/flatten-image.txt)}
 }}
+
 \examples{
 library(AFM)
 library(data.table)
@@ -83,4 +85,3 @@ RandomFakeAFMImage<-AFMImage(
 \author{
 M.Beauvais
 }
-

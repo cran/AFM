@@ -31,4 +31,3 @@ anAFMImageExtract<-simplifyAFMImage(AFMImageOfAluminiumInterface,16,16)
 \author{
 M.Beauvais
 }
-

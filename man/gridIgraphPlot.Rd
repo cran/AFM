@@ -17,4 +17,3 @@ gridIgraphPlot(AFMImage, g)
 \author{
 M.Beauvais
 }
-

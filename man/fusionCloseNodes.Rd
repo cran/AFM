@@ -13,9 +13,10 @@ fusionCloseNodes(AFMImageNetworksAnalysis)
 a list of edges with fusioned nodes
 }
 \description{
-fusion the nodes that are intersecting
+manage the fusion of nodes which circles instersect
+keep all the circles, manage a fusion table
+node id / fusion id
 }
 \author{
 M.Beauvais
 }
-

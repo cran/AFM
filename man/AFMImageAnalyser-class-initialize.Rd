@@ -37,4 +37,3 @@
 \description{
 Constructor method of AFMImageAnalyser Class.
 }
-

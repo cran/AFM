@@ -42,4 +42,3 @@ p2
 \author{
 M.Beauvais
 }
-

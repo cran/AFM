@@ -20,4 +20,3 @@ Calculate slopes and intersections in variogram
 \author{
 M.Beauvais
 }
-

@@ -18,4 +18,3 @@ saveOnDiskIntersectionForRoughnessAgainstLengthscale(AFMImageAnalyser,
 \author{
 M.Beauvais
 }
-

@@ -2,19 +2,16 @@
 % Please edit documentation in R/AFMNetworksAnalyser.R
 \name{createGraph}
 \alias{createGraph}
-\title{create the igraph graph from the fusionned nodes and the edges}
+\title{create the igraph weighted graph from the nodes and edges}
 \usage{
-createGraph(AFMImageNetworksAnalysis, fusioned = TRUE)
+createGraph(AFMImageNetworksAnalysis)
 }
 \arguments{
 \item{AFMImageNetworksAnalysis}{a \code{\link{AFMImageNetworksAnalysis}}}
-
-\item{fusioned}{TRUE if graph is created from fusioned nodes}
 }
 \description{
-create the igraph graph from the fusionned nodes and the edges
+create the igraph weighted graph from the nodes and edges
 }
 \author{
 M.Beauvais
 }
-

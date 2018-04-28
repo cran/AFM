@@ -45,4 +45,3 @@ p1
 \author{
 M.Beauvais
 }
-

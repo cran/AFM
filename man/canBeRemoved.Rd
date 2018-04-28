@@ -21,4 +21,3 @@ canBeRemoved(vertexId, g, allVertices, DEGREE_LIMIT_FOR_CANDIDATE_VERTICE)
 \author{
 M.Beauvais
 }
-

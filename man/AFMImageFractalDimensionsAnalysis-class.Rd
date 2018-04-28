@@ -2,11 +2,13 @@
 % Please edit documentation in R/AFMFractalDimensionAnalyser.R
 \docType{methods}
 \name{AFMImageFractalDimensionsAnalysis-class}
+\alias{AFMImageFractalDimensionsAnalysis-class}
+\alias{AFMImageFractalDimensionsAnalysis}
+\alias{initialize,AFMImageFractalDimensionsAnalysis-method}
 \alias{AFMImageFractalDimensionsAnalysis}
 \alias{AFMImageFractalDimensionsAnalysis-class}
-\alias{fractalDimensionMethods}
 \alias{fractalDimensionMethods,AFMImageFractalDimensionsAnalysis-method}
-\alias{initialize,AFMImageFractalDimensionsAnalysis-method}
+\alias{fractalDimensionMethods}
 \title{AFM image fractal dimensions analysis class}
 \usage{
 AFMImageFractalDimensionsAnalysis()
@@ -47,7 +49,7 @@ Method \code{fractalDimensionMethods} returns a list of FractalDimensionMethod o
 
 \item{\code{updateProgress}}{a function to update a graphical user interface}
 }}
+
 \author{
 M.Beauvais
 }
-

@@ -60,4 +60,3 @@ p5
 \author{
 M.Beauvais
 }
-

@@ -39,4 +39,3 @@ saveSpplotFromAFMImage(AFMImageOfAluminiumInterface,
 \author{
 M.Beauvais
 }
-

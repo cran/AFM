@@ -2,9 +2,10 @@
 % Please edit documentation in R/AFMFractalDimensionAnalyser.R
 \docType{methods}
 \name{AFMImageFractalDimensionMethod-class}
-\alias{AFMImageFractalDimensionMethod}
 \alias{AFMImageFractalDimensionMethod-class}
+\alias{AFMImageFractalDimensionMethod}
 \alias{initialize,AFMImageFractalDimensionMethod-method}
+\alias{AFMImageFractalDimensionMethod}
 \title{AFM image fractal dimension method class}
 \usage{
 AFMImageFractalDimensionMethod(fd_method, fd, fd_scale)
@@ -39,10 +40,10 @@ Wrapper function AFMImageFractalDimensionMethod
 
 \item{\code{fd_scale}}{the value of the fractal scale}
 }}
-\author{
-M.Beauvais
-}
+
 \seealso{
 \code{\link{fractaldim}}
 }
-
+\author{
+M.Beauvais
+}

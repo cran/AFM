@@ -20,10 +20,9 @@ an \code{\link{AFMImage}}
 \examples{
 data(AFMImageOfAluminiumInterface)
 newAFMImage<-multiplyHeightsAFMImage(AFMImageOfAluminiumInterface,10)
-displayIn3D(newAFMImage)
+displayIn3D(newAFMImage,noLight=TRUE)
 
 }
 \author{
 M.Beauvais
 }
-

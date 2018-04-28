@@ -18,4 +18,3 @@ identify isolated nodes comparing the list of edges and the list of nodes
 \author{
 M.Beauvais
 }
-

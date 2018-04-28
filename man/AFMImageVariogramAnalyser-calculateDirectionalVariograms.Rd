@@ -47,4 +47,3 @@ p
 \author{
 M.Beauvais
 }
-

@@ -20,4 +20,3 @@ printVariogramModelEvaluations(AFMImageAnalyser, sampleDT,
 \author{
 M.Beauvais
 }
-

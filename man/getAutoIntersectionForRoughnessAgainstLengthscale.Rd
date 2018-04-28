@@ -21,4 +21,3 @@ a \code{\link{AFMImagePSDSlopesAnalysis}}
 \author{
 M.Beauvais
 }
-

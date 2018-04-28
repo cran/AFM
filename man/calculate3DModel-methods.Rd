@@ -3,8 +3,8 @@
 \docType{methods}
 \name{calculate3DModel}
 \alias{calculate3DModel}
-\alias{calculate3DModel,AFMImage-method}
 \alias{calculate3DModel,AFMImage3DModelAnalysis-method}
+\alias{calculate3DModel,AFMImage-method}
 \title{Calculate the 3D model for 3D printing}
 \usage{
 calculate3DModel(AFMImage3DModelAnalysis, AFMImage)
@@ -23,4 +23,3 @@ calculate3DModel(AFMImage3DModelAnalysis, AFMImage)
 \author{
 M.Beauvais
 }
-

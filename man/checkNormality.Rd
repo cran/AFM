@@ -28,10 +28,9 @@ library(AFM)
                  pngfullfilename=paste(tempdir(), "checkNormality.png", sep="/"))
 }
 }
-\author{
-M.Beauvais
-}
 \references{
 Olea2006, Ricardo A. Olea "A six-step practical approach to semivariogram modeling", 2006, "Stochastic Environmental Research and Risk Assessment, Volume 20, Issue 5 , pp 307-318"
 }
-
+\author{
+M.Beauvais
+}

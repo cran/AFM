@@ -4,20 +4,19 @@
 \alias{identifyNodesWithCircles}
 \title{identify largest circles in binary image}
 \usage{
-identifyNodesWithCircles(AFMImageNetworksAnalysis, smallBranchesTreatment)
+identifyNodesWithCircles(..., AFMImageNetworksAnalysis)
 }
 \arguments{
-\item{AFMImageNetworksAnalysis}{a \code{\link{AFMImageNetworksAnalysis}}}
+\item{...}{cl: a cluster object from the parallel package}
 
-\item{smallBranchesTreatment}{TRUE if the algorithm should try to identify very small branches}
+\item{AFMImageNetworksAnalysis}{a \code{\link{AFMImageNetworksAnalysis}}}
 }
 \value{
 AFMImageNetworksAnalysis the \code{\link{AFMImageNetworksAnalysis}} instance
 }
 \description{
-\code{identifyCirclesInBinaryImage} return TRUE if vertex is adjacent to a better vertex
+\code{identifyNodesWithCircles} return TRUE if vertex is adjacent to a better vertex
 }
 \author{
 M.Beauvais
 }
-

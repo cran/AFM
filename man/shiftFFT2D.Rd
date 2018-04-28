@@ -22,9 +22,8 @@ library(fftwtools)
 data(AFMImageOfNormallyDistributedHeights)
 AFMImage<-AFMImageOfNormallyDistributedHeights
 nMheightsData= matrix(AFMImage@data$h, nrow=AFMImage@samplesperline)
-shiftedFFT2D<-shiftFFT2D(fftw2d(nMheightsData))
+shiftedFFT2D<-shiftFFT2D(fftwtools::fftw2d(nMheightsData))
 }
 \author{
 M.Beauvais
 }
-

@@ -17,4 +17,3 @@ getTopologyAFMImage(BinaryAFMImage, AFMImageNetworksAnalysis)
 \author{
 M.Beauvais
 }
-

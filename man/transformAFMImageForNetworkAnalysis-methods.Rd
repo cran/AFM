@@ -3,8 +3,8 @@
 \docType{methods}
 \name{transformAFMImageForNetworkAnalysis}
 \alias{transformAFMImageForNetworkAnalysis}
-\alias{transformAFMImageForNetworkAnalysis,AFMImage-method}
 \alias{transformAFMImageForNetworkAnalysis,AFMImageNetworksAnalysis-method}
+\alias{transformAFMImageForNetworkAnalysis,AFMImage-method}
 \title{Multiply, filter the heights and make a binary AFMImage from the transformed AFMImage}
 \usage{
 transformAFMImageForNetworkAnalysis(AFMImageNetworksAnalysis, AFMImage)
@@ -24,4 +24,3 @@ transformAFMImageForNetworkAnalysis(AFMImageNetworksAnalysis, AFMImage)
 \author{
 M.Beauvais
 }
-

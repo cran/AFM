@@ -18,15 +18,15 @@ The function saves the an \code{\link{AFMImage}} as a rdata file. It uses the fu
 \code{saveOnDisk} save on disk an \code{\link{AFMImage}} as rdata file
 }
 \examples{
+\dontrun{
 library(AFM)
 
 data(AFMImageOfAluminiumInterface)
 # save the rdata file of the AFMImage in the tempdir() directory;
 # select another directory to save it permanently on your hard drive
 saveOnDisk(AFMImageOfAluminiumInterface, tempdir())
-
+}
 }
 \author{
 M.Beauvais
 }
-

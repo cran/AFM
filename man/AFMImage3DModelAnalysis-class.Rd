@@ -2,8 +2,8 @@
 % Please edit documentation in R/AFM3DPrinter.R
 \docType{class}
 \name{AFMImage3DModelAnalysis-class}
-\alias{AFMImage3DModelAnalysis}
 \alias{AFMImage3DModelAnalysis-class}
+\alias{AFMImage3DModelAnalysis}
 \title{AFM image Power Spectrum Density analysis class}
 \description{
 \code{AFMImage3DModelAnalysis}
@@ -19,7 +19,7 @@
 
 \item{\code{f4}}{a face of the 3D model}
 }}
+
 \author{
 M.Beauvais
 }
-

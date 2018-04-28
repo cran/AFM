@@ -4,15 +4,14 @@
 \alias{identifyEdgesFromCircles}
 \title{display the network of nodes and edges}
 \usage{
-identifyEdgesFromCircles(AFMImageNetworksAnalysis, MAX_DISTANCE = 40,
-  ANGLE_MIN = (pi/3.25))
+identifyEdgesFromCircles(..., AFMImageNetworksAnalysis, MAX_DISTANCE = 40)
 }
 \arguments{
+\item{...}{cl: a cluster object from the parallel package}
+
 \item{AFMImageNetworksAnalysis}{a \code{\link{AFMImageNetworksAnalysis}}}
 
 \item{MAX_DISTANCE}{the maximum distance between nodes to check if nodes are connected. Default value is 40.}
-
-\item{ANGLE_MIN}{the minimum angle between edges to accept or reject an edge}
 }
 \description{
 display the network of nodes and edges
@@ -20,4 +19,3 @@ display the network of nodes and edges
 \author{
 M.Beauvais
 }
-

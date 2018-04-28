@@ -4,12 +4,14 @@
 \alias{calculatePhysicalDistanceFromPath}
 \title{calculate the physical distances between nodes}
 \usage{
-calculatePhysicalDistanceFromPath(AFMImage, pathVidVector)
+calculatePhysicalDistanceFromPath(pathVidVector, hscale, vscale)
 }
 \arguments{
-\item{AFMImage}{an \code{\link{AFMImage}} from Atomic Force Microscopy}
-
 \item{pathVidVector}{a network path}
+
+\item{hscale}{the hscale of the \code{\link{AFMImage}} from Atomic Force Microscopy}
+
+\item{vscale}{the vscale of the \code{\link{AFMImage}} from Atomic Force Microscopy}
 }
 \value{
 the physical distance the extrmities of the path
@@ -20,4 +22,3 @@ calculate the physical distances between nodes
 \author{
 M.Beauvais
 }
-

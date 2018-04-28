@@ -12,10 +12,9 @@ Launch the AFM shiny graphical interface to access most of the fonctionalities o
 \examples{
 \dontrun{
 install.packages("AFM")
-AFM::runAFMapp()
+AFM::runAFMApp()
 }
 }
 \author{
 M.Beauvais
 }
-

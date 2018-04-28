@@ -27,10 +27,9 @@ library(AFM)
 
 fullfilename<-"/user/ubuntu/NanoscopeFlattenExportedFile.txt"
 myAFMimage<-importFromNanoscope(fullfilename)
-displayIn3D(myAFMimage, 1024)
+displayIn3D(myAFMimage, width=1024, noLight=TRUE))
 }
 }
 \author{
 M.Beauvais
 }
-

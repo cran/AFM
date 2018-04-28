@@ -42,4 +42,3 @@ library(AFM)
 \author{
 M.Beauvais
 }
-

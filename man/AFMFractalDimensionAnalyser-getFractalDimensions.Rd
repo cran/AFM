@@ -15,7 +15,7 @@ getFractalDimensions(AFMImage, AFMImageFractalDimensionsAnalysis)
 a list of \code{\link{AFMImageFractalDimensionMethod}} objects with the calculated fractal dimensions and scales
 }
 \description{
-\code{getFractalDimensions} calculates fractal dimensions and scales of an \code{\link{AFMImage}} with \code{\link[fractaldim]{fd.estim.method}} from the \code{\link{fractaldim}} package.
+\code{getFractalDimensions} calculates fractal dimensions and scales of an \code{\link{AFMImage}} with the fd.estim.method from the \code{\link{fractaldim}} package.
 }
 \examples{
 library(AFM)
@@ -23,13 +23,12 @@ library(AFM)
 data(AFMImageOfAluminiumInterface)
 print(getFractalDimensions(AFMImageOfAluminiumInterface))
 }
-\author{
-M.Beauvais
-}
 \references{
 Gneiting2012, Tilmann Gneiting, Hana Sevcikova and Donald B. Percival 'Estimators of Fractal Dimension: Assessing the Roughness of Time Series and Spatial Data - Statistics in statistical Science, 2012, Vol. 27, No. 2, 247-277'
 }
 \seealso{
 \code{\link{fractaldim}}
 }
-
+\author{
+M.Beauvais
+}

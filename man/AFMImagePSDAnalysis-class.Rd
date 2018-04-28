@@ -2,23 +2,31 @@
 % Please edit documentation in R/AFMPSDAnalyser.R
 \docType{methods}
 \name{AFMImagePSDAnalysis-class}
+\alias{AFMImagePSDAnalysis-class}
+\alias{AFMImagePSDAnalysis}
+\alias{initialize,AFMImagePSDAnalysis-method}
 \alias{AFMImagePSDAnalysis}
 \alias{AFMImagePSDAnalysis-class}
-\alias{initialize,AFMImagePSDAnalysis-method}
-\alias{intersections}
-\alias{intersections,AFMImagePSDAnalysis-method}
-\alias{psd1d}
-\alias{psd1d,AFMImagePSDAnalysis-method}
-\alias{psd1d_breaks}
 \alias{psd1d_breaks,AFMImagePSDAnalysis-method}
-\alias{psd2d}
-\alias{psd2d,AFMImagePSDAnalysis-method}
-\alias{psd2d_maxHighLengthScale}
+\alias{psd1d_breaks}
+\alias{AFMImagePSDAnalysis-class}
 \alias{psd2d_maxHighLengthScale,AFMImagePSDAnalysis-method}
-\alias{psd2d_truncHighLengthScale}
+\alias{psd2d_maxHighLengthScale}
+\alias{AFMImagePSDAnalysis-class}
 \alias{psd2d_truncHighLengthScale,AFMImagePSDAnalysis-method}
-\alias{roughnessAgainstLengthscale}
+\alias{psd2d_truncHighLengthScale}
+\alias{AFMImagePSDAnalysis-class}
+\alias{psd1d,AFMImagePSDAnalysis-method}
+\alias{psd1d}
+\alias{AFMImagePSDAnalysis-class}
+\alias{psd2d,AFMImagePSDAnalysis-method}
+\alias{psd2d}
+\alias{AFMImagePSDAnalysis-class}
 \alias{roughnessAgainstLengthscale,AFMImagePSDAnalysis-method}
+\alias{roughnessAgainstLengthscale}
+\alias{AFMImagePSDAnalysis-class}
+\alias{intersections,AFMImagePSDAnalysis-method}
+\alias{intersections}
 \title{AFM image Power Spectrum Density analysis class}
 \usage{
 AFMImagePSDAnalysis()
@@ -90,7 +98,7 @@ Method \code{intersections} returns a intersection numeric value
 
 \item{\code{updateProgress}}{a function to update a graphical user interface}
 }}
+
 \author{
 M.Beauvais
 }
-

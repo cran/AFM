@@ -27,4 +27,3 @@ exit<-generateReportFromNanoscopeImageDirectory(imageDirectory,5)
 \author{
 M.Beauvais
 }
-

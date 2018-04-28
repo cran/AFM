@@ -2,15 +2,19 @@
 % Please edit documentation in R/AFMVariogramAnalyser.R
 \docType{methods}
 \name{AFMImageVariogramAnalysis-class}
+\alias{AFMImageVariogramAnalysis-class}
+\alias{AFMImageVariogramAnalysis}
+\alias{initialize,AFMImageVariogramAnalysis-method}
 \alias{AFMImageVariogramAnalysis}
 \alias{AFMImageVariogramAnalysis-class}
-\alias{directionalVariograms}
-\alias{directionalVariograms,AFMImageVariogramAnalysis-method}
-\alias{initialize,AFMImageVariogramAnalysis-method}
-\alias{omnidirectionalVariogram}
-\alias{omnidirectionalVariogram,AFMImageVariogramAnalysis-method}
-\alias{variogramModels}
 \alias{variogramModels,AFMImageVariogramAnalysis-method}
+\alias{variogramModels}
+\alias{AFMImageVariogramAnalysis-class}
+\alias{omnidirectionalVariogram,AFMImageVariogramAnalysis-method}
+\alias{omnidirectionalVariogram}
+\alias{AFMImageVariogramAnalysis-class}
+\alias{directionalVariograms,AFMImageVariogramAnalysis-method}
+\alias{directionalVariograms}
 \title{AFM image variogram analysis class}
 \usage{
 AFMImageVariogramAnalysis(sampleFitPercentage)
@@ -76,7 +80,7 @@ Method \code{directionalVariograms} returns the directional variograms
 
 \item{\code{updateProgress}}{a function to update a graphical user interface}
 }}
+
 \author{
 M.Beauvais
 }
-

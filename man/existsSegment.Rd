@@ -9,7 +9,7 @@ existsSegment(AFMImage, segment)
 \arguments{
 \item{AFMImage}{a \code{\link{AFMImage}} from Atomic Force Microscopy or a binary \code{\link{AFMImage}}}
 
-\item{segment}{a data.table coming from the getBresenham2Dsegment #TODO Segment class}
+\item{segment}{a data.table coming from the getBresenham2Dsegment - x and y should start from 1,1 #TODO Segment class}
 }
 \value{
 TRUE if all the heights of the segment are different from zero
@@ -20,4 +20,3 @@ TRUE if all the heights of the segment are different from zero
 \author{
 M.Beauvais
 }
-

@@ -17,4 +17,3 @@ calculateNetworkSkeleton(AFMImage, AFMImageNetworksAnalysis)
 \author{
 M.Beauvais
 }
-

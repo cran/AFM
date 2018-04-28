@@ -26,13 +26,20 @@ In order to 3D print the AFM Image with slic3r, do as following:
 \examples{
 \dontrun{
 library(AFM)
-
-data(AFMImageOfAluminiumInterface)
-newAFMImage<-extractAFMImage(AFMImageOfAluminiumInterface, cornerX=50, cornerY=50, size=64)
-exportToSTL(newAFMImage, paste(tempdir(), "myFile.stl", sep="/"))
+data("AFMImageOfRegularPeaks")
+AFMImage<-AFMImageOfRegularPeaks
+# calculate the 3D model : surface and the faces
+AFMImage3DModelAnalysis<-new ("AFMImage3DModelAnalysis")
+AFMImage3DModelAnalysis<-calculate3DModel(AFMImage3DModelAnalysis= AFMImage3DModelAnalysis,
+                                          AFMImage= AFMImage)
+# export the 3D model to file
+exportDirectory=tempdir()
+print(paste("saving model in ", exportDirectory))
+exportToSTL(AFMImage3DModelAnalysis=AFMImage3DModelAnalysis,
+            AFMImage=AFMImage, 
+            stlfullfilename=paste(exportDirectory, "myFile.stl", sep="/"))
 }
 }
 \author{
 M.Beauvais
 }
-

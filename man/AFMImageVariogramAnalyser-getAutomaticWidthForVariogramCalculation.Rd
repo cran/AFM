@@ -30,4 +30,3 @@ print(getAutomaticWidthForVariogramCalculation(AFMImageOfAluminiumInterface))
 \author{
 M.Beauvais
 }
-

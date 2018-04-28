@@ -2,25 +2,20 @@
 % Please edit documentation in R/AFMNetworksAnalyser.R
 \name{calculateShortestPaths}
 \alias{calculateShortestPaths}
-\title{calculate the  shortest path between adjacent nodes
-Calculateshrotest path between all nodes of degree superior to 3
-identify nodes that are connected by nodes which degrees is inferior to 2
-and calculate the distance between these nodes}
+\title{calculate the  shortest path between adjacent nodes}
 \usage{
-calculateShortestPaths(AFMImageNetworksAnalysis, fusioned = TRUE)
+calculateShortestPaths(..., AFMImageNetworksAnalysis)
 }
 \arguments{
-\item{AFMImageNetworksAnalysis}{a \code{\link{AFMImageNetworksAnalysis}}}
+\item{...}{cl: a cluster object from the parallel package}
 
-\item{fusioned}{TRUE if graph is created from fusioned nodes}
+\item{AFMImageNetworksAnalysis}{a \code{\link{AFMImageNetworksAnalysis}}}
 }
 \description{
-calculate the  shortest path between adjacent nodes
-Calculateshrotest path between all nodes of degree superior to 3
-identify nodes that are connected by nodes which degrees is inferior to 2
-and calculate the distance between these nodes
+Calculate the shortest path between all nodes of degree different to 2
+that are connected with nodes of degree equal to 2
+Calculate the distance between the above nodes.
 }
 \author{
 M.Beauvais
 }
-

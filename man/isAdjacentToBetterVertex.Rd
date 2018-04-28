@@ -19,4 +19,3 @@ isAdjacentToBetterVertex(AFMImage, x, y)
 \author{
 M.Beauvais
 }
-

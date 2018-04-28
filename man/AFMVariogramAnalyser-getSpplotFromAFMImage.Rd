@@ -34,4 +34,3 @@ print(p)
 \author{
 M.Beauvais
 }
-

@@ -11,4 +11,3 @@ lines= 128
 hscansize= 128
 vscansize= 128
 }
-

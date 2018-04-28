@@ -21,4 +21,3 @@ On Unix system, it is necessary to have a X server connection to be able to use 
 \author{
 M.Beauvais
 }
-

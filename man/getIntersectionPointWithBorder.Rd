@@ -21,4 +21,3 @@ getIntersectionPointWithBorder(AFMImage, center, r, deg)
 \author{
 M.Beauvais
 }
-

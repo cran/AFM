@@ -2,23 +2,28 @@
 % Please edit documentation in R/AFMNetworksAnalyser.R
 \docType{methods}
 \name{AFMImageNetworksAnalysis-class}
-\alias{AFMImageNetworksAnalysis}
 \alias{AFMImageNetworksAnalysis-class}
+\alias{AFMImageNetworksAnalysis}
 \alias{initialize,AFMImageNetworksAnalysis-method}
+\alias{AFMImageNetworksAnalysis}
 \title{AFM image networks analysis class}
 \usage{
 AFMImageNetworksAnalysis()
 
-\S4method{initialize}{AFMImageNetworksAnalysis}(.Object, binaryAFMImage,
-  binaryAFMImageWithCircles, circlesTable, edgesTable,
+\S4method{initialize}{AFMImageNetworksAnalysis}(.Object, vertexHashsize,
+  binaryAFMImage, binaryAFMImageWithCircles, circlesTable, edgesTable,
   fusionedNodesCorrespondance, fusionedNodesEdgesTable, isolatedNodesList,
   heightNetworksslider, filterNetworkssliderMin, filterNetworkssliderMax,
-  originalGraph, skeletonGraph, shortestPaths, libVersion)
+  smallBranchesTreatment, originalGraph, skeletonGraph, shortestPaths,
+  networksCharacteristics, holes, holesCharacteristics, graphEvcent,
+  graphBetweenness, libVersion)
 
 AFMImageNetworksAnalysis()
 }
 \arguments{
 \item{.Object}{an AFMImageNetworksAnalysis Class}
+
+\item{vertexHashsize}{hash to transform coordinates to vertexId}
 
 \item{binaryAFMImage}{the AFMImage after transformation before analysis}
 
@@ -40,11 +45,23 @@ AFMImageNetworksAnalysis()
 
 \item{filterNetworkssliderMax}{used filter maximum value to facilitate analysis}
 
+\item{smallBranchesTreatment}{boolean - smallest circle used or not}
+
 \item{originalGraph}{a list of \code{\link{igraph}}}
 
 \item{skeletonGraph}{a list of \code{\link{igraph}}}
 
 \item{shortestPaths}{a data.table of shortest path}
+
+\item{networksCharacteristics}{a data.table to store the skeleton graph characteristics}
+
+\item{holes}{a data.table to store the cluster number of each point}
+
+\item{holesCharacteristics}{a data.table to summarize the data about holes}
+
+\item{graphEvcent}{an array to store Evcent}
+
+\item{graphBetweenness}{an array to store the graph betweenness}
 
 \item{libVersion}{version of the AFM library used to perform the analysis}
 }
@@ -58,6 +75,8 @@ Wrapper function AFMImageNetworksAnalysis
 \section{Slots}{
 
 \describe{
+\item{\code{vertexHashsize}}{hash to transform coordinates to vertexId}
+
 \item{\code{binaryAFMImage}}{the AFMImage after transformation before analysis}
 
 \item{\code{binaryAFMImageWithCircles}}{the AFMImage after transformation with the spotted circles}
@@ -78,17 +97,25 @@ Wrapper function AFMImageNetworksAnalysis
 
 \item{\code{filterNetworkssliderMax}}{used filter maximum value to facilitate analysis}
 
+\item{\code{smallBranchesTreatment}}{boolean - smallest circle used or not}
+
 \item{\code{originalGraph}}{a list of \code{\link{igraph}}}
 
 \item{\code{skeletonGraph}}{a list of \code{\link{igraph}}}
 
 \item{\code{shortestPaths}}{a data.table of shortest paths}
 
+\item{\code{networksCharacteristics}}{a data.table to store the skeleton graph characteristics}
+
+\item{\code{graphEvcent}}{an array to store Evcent}
+
+\item{\code{graphBetweenness}}{an array to store the graph betweenness}
+
 \item{\code{libVersion}}{version of the AFM library used to perform the analysis}
 
 \item{\code{updateProgress}}{a function to update a graphical user interface}
 }}
+
 \author{
 M.Beauvais
 }
-

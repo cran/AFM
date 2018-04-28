@@ -21,4 +21,3 @@ A function to export to all the data from all analysis of an \code{\link{AFMImag
 \author{
 M.Beauvais
 }
-

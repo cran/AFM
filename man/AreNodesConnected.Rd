@@ -26,4 +26,3 @@ check if nodes represented by circles are connected. The function defines all th
 \author{
 M.Beauvais
 }
-

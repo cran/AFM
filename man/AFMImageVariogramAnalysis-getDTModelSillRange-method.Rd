@@ -3,6 +3,7 @@
 \docType{methods}
 \name{getDTModelSillRange}
 \alias{getDTModelSillRange}
+\alias{getDTModelSillRange}
 \alias{getDTModelSillRange,AFMImageVariogramAnalysis-method}
 \title{getDTModelSillRange method}
 \usage{
@@ -17,4 +18,3 @@ getDTModelSillRange(AFMImageVariogramAnalysis)
 \description{
 getDTModelSillRange method
 }
-

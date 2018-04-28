@@ -24,4 +24,3 @@ a data.table of points - data.table(x, y)
 \author{
 M.Beauvais
 }
-

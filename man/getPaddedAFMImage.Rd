@@ -20,9 +20,8 @@ library(AFM)
 
 data(AFMImageOfNormallyDistributedHeights)
 paddedAFMImage<-getPaddedAFMImage(AFMImageOfNormallyDistributedHeights)
-displayIn3D(AFMImage= paddedAFMImage, width= 1024)
+displayIn3D(AFMImage= paddedAFMImage, width= 1024,noLight=TRUE)
 }
 \author{
 M.Beauvais
 }
-

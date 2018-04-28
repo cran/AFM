@@ -17,4 +17,3 @@ calculateIgraph(AFMImage, AFMImageNetworksAnalysis)
 \author{
 M.Beauvais
 }
-

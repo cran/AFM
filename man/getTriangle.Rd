@@ -23,4 +23,3 @@ getTriangle(AFMImage, center, r, deg1, deg2)
 \author{
 M.Beauvais
 }
-

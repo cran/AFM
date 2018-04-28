@@ -2,9 +2,10 @@
 % Please edit documentation in R/AFMVariogramAnalyser.R
 \docType{methods}
 \name{AFMImageVariogramModel-class}
-\alias{AFMImageVariogramModel}
 \alias{AFMImageVariogramModel-class}
+\alias{AFMImageVariogramModel}
 \alias{initialize,AFMImageVariogramModel-method}
+\alias{AFMImageVariogramModel}
 \title{AFM Image Variogram Model class}
 \usage{
 AFMImageVariogramModel()
@@ -60,7 +61,7 @@ Wrapper function AFMImageVariogramModel
 
 \item{\code{imageFullfilename}}{to be removed ?}
 }}
+
 \author{
 M.Beauvais
 }
-

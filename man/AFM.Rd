@@ -56,9 +56,6 @@ Note: To use with a Brucker(TM) Atomic Force Microscope, use nanoscope analysis(
   generateReport(AFMImage)
   }
 }
-\author{
-M.Beauvais, J.Landoulsi, I.Liascukiene
-}
 \references{
 Gneiting2012, Tilmann Gneiting, Hana Sevcikova and Donald B. Percival 'Estimators of Fractal Dimension: Assessing the Roughness of Time Series and Spatial Data - Statistics in statistical Science, 2012, Vol. 27, No. 2, 247-277' \cr\cr
 Olea2006, Ricardo A. Olea "A six-step practical approach to semivariogram modeling", 2006, "Stochastic Environmental Research and Risk Assessment, Volume 20, Issue 5 , pp 307-318" \cr\cr
@@ -67,4 +64,6 @@ Sidick2009, Erkin Sidick "Power Spectral Density Specification and Analysis of L
 \seealso{
 \code{\link{gstat}}, \code{\link{fractaldim}}, \code{\link{rgl}}
 }
-
+\author{
+M.Beauvais, J.Landoulsi, I.Liascukiene
+}

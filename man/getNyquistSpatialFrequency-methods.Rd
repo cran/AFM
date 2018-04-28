@@ -34,4 +34,3 @@ print(NyquistSpatialFrequency)
 \author{
 M.Beauvais
 }
-

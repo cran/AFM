@@ -22,4 +22,3 @@ get the spatial points on the circle including the center of the circle
 \author{
 M.Beauvais
 }
-

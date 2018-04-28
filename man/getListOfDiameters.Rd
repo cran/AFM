@@ -15,4 +15,3 @@ getListOfDiameters(g)
 \author{
 M.Beauvais
 }
-

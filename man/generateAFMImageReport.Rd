@@ -19,4 +19,3 @@ generateAFMImageReport(AFMImageAnalyser, reportFullfilename, isCheckReport)
 \author{
 M.Beauvais
 }
-
