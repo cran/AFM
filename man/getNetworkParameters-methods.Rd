@@ -42,29 +42,24 @@ Mean roughness or Ra or MeanRoughness_Ra
 library(AFM)
 library(parallel)
 
-# dir = ""
-# filename= ""
-AFMImage<-importFromNanoscope(paste0(dir,filename))
-AFMImageNetworksAnalysis = new("AFMImageNetworksAnalysis")
-AFMImageNetworksAnalysis@heightNetworksslider=10
-AFMImageNetworksAnalysis@filterNetworkssliderMin=150
-AFMImageNetworksAnalysis@filterNetworkssliderMax=300
-AFMImageNetworksAnalysis@smallBranchesTreatment=TRUE
-AFMImageNetworksAnalysis<-transformAFMImageForNetworkAnalysis(AFMImageNetworksAnalysis, AFMImage)
-numWorkers <- parallel::detectCores()
-cl <- makeCluster(numWorkers,outfile="")
-AFMImageNetworksAnalysis<-identifyNodesWithCircles(cl=cl, 
-    AFMImageNetworksAnalysis= AFMImageNetworksAnalysis)
-AFMImageNetworksAnalysis<-identifyEdgesFromCircles(cl=cl,
-    AFMImageNetworksAnalysis= AFMImageNetworksAnalysis,
-    MAX_DISTANCE = 40)
-AFMImageNetworksAnalysis<-identifyIsolatedNodes(AFMImageNetworksAnalysis)
-AFMImageNetworksAnalysis<-createGraph(AFMImageNetworksAnalysis, fusioned=FALSE)
-AFMImageNetworksAnalysis<-calculateShortestPaths(cl=cl,
-    AFMImageNetworksAnalysis= AFMImageNetworksAnalysis)
+data(AFMImageCollagenNetwork)
+AFMImage<-AFMImageCollagenNetwork
+AFMIA = new("AFMImageNetworksAnalysis")
+AFMIA@heightNetworksslider=10
+AFMIA@filterNetworkssliderMin=150
+AFMIA@filterNetworkssliderMax=300
+AFMIA@smallBranchesTreatment=TRUE
+clExist<-TRUE
+cl <- makeCluster(2,outfile="")
+AFMIA<-transformAFMImageForNetworkAnalysis(AFMImageNetworksAnalysis=AFMIA,AFMImage= AFMImage)
+AFMIA<-identifyNodesAndEdges(cl=cl,AFMImageNetworksAnalysis= AFMIA,maxHeight= 300)
+AFMIA<-identifyEdgesFromCircles(cl=cl,AFMImageNetworksAnalysis= AFMIA, MAX_DISTANCE = 75)
+AFMIA<-identifyIsolatedNodes(AFMIA)
+AFMIA<-createGraph(AFMIA)
+AFMIA<-calculateShortestPaths(cl=cl, AFMImageNetworksAnalysis=AFMIA)
+AFMIA<-calculateNetworkParameters(AFMImageNetworksAnalysis=AFMIA, AFMImage=AFMImage)
+AFMIA<-calculateHolesCharacteristics(AFMImageNetworksAnalysis=AFMIA)
 stopCluster(cl)
-networkParameters<-getNetworkParameters(AFMImageNetworksAnalysis, AFMImage)
-print(networkParameters)
 }
 }
 \author{

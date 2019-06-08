@@ -5,7 +5,6 @@
 \alias{AFMImagePSDSlopesAnalysis-class}
 \alias{AFMImagePSDSlopesAnalysis}
 \alias{initialize,AFMImagePSDSlopesAnalysis-method}
-\alias{AFMImagePSDSlopesAnalysis}
 \title{AFM Image psd slope analysis}
 \usage{
 AFMImagePSDSlopesAnalysis()
@@ -19,10 +18,6 @@ AFMImagePSDSlopesAnalysis()
 }
 \description{
 \code{AFMImagePSDSlopesAnalysis} stores the analysis of the second slope in roughness against lenghtscale
-
-Constructor method of AFMImagePSDSlopesAnalysis Class.
-
-Wrapper function AFMImagePSDSlopesAnalysis
 }
 \section{Slots}{
 

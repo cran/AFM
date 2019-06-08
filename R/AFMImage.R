@@ -208,7 +208,7 @@ importFromNanoscope<-function(fullfilename){
   #Height(nm)
   headerEndString<-"Height(nm)"
   
-  wholeFile <- fread(fullfilename)
+  wholeFile <- fread(fullfilename, sep="\t", quote="")
   wholeFile <- unlist(wholeFile)
   headerSizeWhich<-which(wholeFile==headerEndString)+1
   #print(headerSizeWhich)

@@ -3,7 +3,6 @@
 \name{AFMImageAnalyser-class}
 \alias{AFMImageAnalyser-class}
 \alias{AFMImageAnalyser}
-\alias{AFMImageAnalyser}
 \title{AFM image analyser class}
 \usage{
 AFMImageAnalyser(AFMImage)
@@ -15,8 +14,6 @@ AFMImageAnalyser(AFMImage)
 }
 \description{
 A S4 class to handle the analysis of one AFM Image.
-
-Wrapper function AFMImageAnalyser
 }
 \section{Slots}{
 
@@ -28,6 +25,8 @@ Wrapper function AFMImageAnalyser
 \item{\code{psdAnalysis}}{\code{\link{AFMImagePSDAnalysis}}}
 
 \item{\code{fdAnalysis}}{\code{\link{AFMImageFractalDimensionsAnalysis}}}
+
+\item{\code{gaussianMixAnalysis}}{\code{\link{AFMImageGaussianMixAnalysis}}}
 
 \item{\code{networksAnalysis}}{\code{\link{AFMImageNetworksAnalysis}}}
 

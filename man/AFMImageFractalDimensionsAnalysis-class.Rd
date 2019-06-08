@@ -5,8 +5,6 @@
 \alias{AFMImageFractalDimensionsAnalysis-class}
 \alias{AFMImageFractalDimensionsAnalysis}
 \alias{initialize,AFMImageFractalDimensionsAnalysis-method}
-\alias{AFMImageFractalDimensionsAnalysis}
-\alias{AFMImageFractalDimensionsAnalysis-class}
 \alias{fractalDimensionMethods,AFMImageFractalDimensionsAnalysis-method}
 \alias{fractalDimensionMethods}
 \title{AFM image fractal dimensions analysis class}
@@ -20,7 +18,8 @@ AFMImageFractalDimensionsAnalysis()
 
 fractalDimensionMethods(object)
 
-\S4method{fractalDimensionMethods}{AFMImageFractalDimensionsAnalysis}(object)
+
+  \S4method{fractalDimensionMethods}{AFMImageFractalDimensionsAnalysis}(object)
 }
 \arguments{
 \item{.Object}{an AFMImageFractalDimensionsAnalysis Class}
@@ -33,12 +32,6 @@ fractalDimensionMethods(object)
 }
 \description{
 A S4 class to handle the fractal dimension calculation with several fractal dimension methods
-
-Constructor method of AFMImageFractalDimensionsAnalysis Class.
-
-Wrapper function AFMImageFractalDimensionsAnalysis
-
-Method \code{fractalDimensionMethods} returns a list of FractalDimensionMethod objects
 }
 \section{Slots}{
 

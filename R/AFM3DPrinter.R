@@ -89,7 +89,7 @@ displayIn3D<- function(AFMImage, width, fullfilename, changeViewpoint, noLight) 
     col <- colorlut[ y-ylim[1]+1 ] # assign colors to heights
     
     rgl.open()
-    par3d(windowRect = 100 + c( 0, 0, width, width ) )
+    par3d(windowRect = 100 + c( 0, 0, width, width ))
     rgl.bg(color = c("white"),  alpha=c(0.0), back = "lines")
     
     bboxylen=3

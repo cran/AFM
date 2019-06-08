@@ -9,7 +9,8 @@
 \usage{
 calculate3DModel(AFMImage3DModelAnalysis, AFMImage)
 
-\S4method{calculate3DModel}{AFMImage3DModelAnalysis}(AFMImage3DModelAnalysis,
+
+  \S4method{calculate3DModel}{AFMImage3DModelAnalysis}(AFMImage3DModelAnalysis,
   AFMImage)
 }
 \arguments{

@@ -5,7 +5,6 @@
 \alias{AFMImageNetworksAnalysis-class}
 \alias{AFMImageNetworksAnalysis}
 \alias{initialize,AFMImageNetworksAnalysis-method}
-\alias{AFMImageNetworksAnalysis}
 \title{AFM image networks analysis class}
 \usage{
 AFMImageNetworksAnalysis()
@@ -67,10 +66,6 @@ AFMImageNetworksAnalysis()
 }
 \description{
 A S4 class to handle the networks calculation
-
-Constructor method of AFMImageNetworksAnalysis Class.
-
-Wrapper function AFMImageNetworksAnalysis
 }
 \section{Slots}{
 

@@ -5,14 +5,13 @@
 \alias{AFMImage-class}
 \alias{AFMImage}
 \alias{initialize,AFMImage-method}
-\alias{AFMImage}
 \title{AFM image class}
 \usage{
 AFMImage(data, samplesperline, lines, hscansize, vscansize, scansize,
   fullfilename)
 
-\S4method{initialize}{AFMImage}(.Object, data, samplesperline, lines, hscansize,
-  vscansize, scansize, fullfilename)
+\S4method{initialize}{AFMImage}(.Object, data, samplesperline, lines,
+  hscansize, vscansize, scansize, fullfilename)
 
 AFMImage(data, samplesperline, lines, hscansize, vscansize, scansize,
   fullfilename)
@@ -36,10 +35,6 @@ AFMImage(data, samplesperline, lines, hscansize, vscansize, scansize,
 }
 \description{
 A S4 class to store and manipulate images from Atomic Force Microscopes.
-
-Constructor method of AFMImage Class.
-
-Wrapper function AFMImage
 }
 \section{Slots}{
 

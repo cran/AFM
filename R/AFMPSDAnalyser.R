@@ -32,15 +32,15 @@ if(getRversion() >= "3.1.0") utils::suppressForeignCheck(c("r", "roughness","x",
 #' @exportClass AFMImagePSDSlopesAnalysis
 #' @author M.Beauvais
 AFMImagePSDSlopesAnalysis<-setClass("AFMImagePSDSlopesAnalysis",
-                                 slots = c(lc="numeric", 
-                                           wsat="numeric", 
-                                           slope="numeric",
-                                           yintersept="numeric",
-                                           tangente_point1="numeric",
-                                           tangente_point2="numeric"),
-                                 validity = function(object) { 
-                                   return(TRUE)
-                                 }
+                                    slots = c(lc="numeric", 
+                                              wsat="numeric", 
+                                              slope="numeric",
+                                              yintersept="numeric",
+                                              tangente_point1="numeric",
+                                              tangente_point2="numeric"),
+                                    validity = function(object) { 
+                                      return(TRUE)
+                                    }
 )
 
 #' Constructor method of AFMImagePSDSlopesAnalysis Class.
@@ -940,9 +940,22 @@ getAutoIntersectionForRoughnessAgainstLengthscale<-function(AFMImageAnalyser, se
   # ndataw$sample<-basename(ndataw$filename)
   # print(paste("length(ndataw)=",length(ndataw)))
   
+  lengthData<-nrow(data)
+  #newMax=ceiling(data[c(lengthData),]$r/20)
+  minW<-which.min(abs(data$r - data[c(lengthData),]$r/20)) 
+  newMax=minW
+  print(paste("first slope - newMax= ",newMax))
+  
+  #newMax_second_slope=ceiling(data[c(lengthData),]$r/10)
+  #newMax_second_slope=ceiling(data[c(lengthData),]$r/10)
+  minW<-which.min(abs(data$r - data[c(lengthData),]$r/10)) 
+  minW
+  data[minW]
+  newMax_second_slope=minW
+  print(paste("second slope newMax_second_slope= ",newMax_second_slope))
   
   
-  minimumR <- function(data, space, x, y) {
+  minimumR <- function(data, space, x, y, second_slope) {
     lengthData<-nrow(data)
     
     aorigin<-0
@@ -950,7 +963,9 @@ getAutoIntersectionForRoughnessAgainstLengthscale<-function(AFMImageAnalyser, se
     #print(borigin)
     
     finalres2=c()
-    finalres = c(Inf,0,0,0,0,0)
+    if (!second_slope) finalres = c(Inf,0,0,0,0,0)
+    else finalres = c(Inf,0,0,0,0,0)
+    
     for (i in seq(1, length(x))) {
       x1=x[i]
       for (j in seq(1, length(y))) {
@@ -975,9 +990,12 @@ getAutoIntersectionForRoughnessAgainstLengthscale<-function(AFMImageAnalyser, se
             b<-unname(res$coefficients[1])
             a<-unname(res$coefficients[2])
             inter <- (borigin-b)/a
-            if ((inter<finalres[1])&(inter>0)) {
+            slope <- a
+            yintersept <- b
+            if ((!second_slope&(inter<finalres[1])&(inter>0))|
+                (second_slope&(inter<finalres[1])&(inter>0))){
               finalres=c(inter, x1, x2, borigin, slope, yintersept)
-              # print(finalres)
+              print(finalres)
               # print(paste(a,b))
               # print(paste(myx[1],myx[2],myy[1],myy[2]))
             }
@@ -998,24 +1016,105 @@ getAutoIntersectionForRoughnessAgainstLengthscale<-function(AFMImageAnalyser, se
     return(AFMImagePSDSlopesAnalysis)
   }
   
-  lengthData<-nrow(data)
-  newMax=ceiling(data[c(lengthData),]$r/20)
+  
   
   if (second_slope==FALSE) {
     aby<-1
     print(aby)
     x <- seq(1, newMax,by=aby)
     print(x)
-    z <- minimumR(data, space= 1, x,x)
+    z <- minimumR(data, space= 1, x,x,second_slope)
   } else {
     aby<-1
     print(aby)
     space=ceiling(lengthData/4)
-    print(space)
-    x <- seq(newMax,lengthData, by=aby)
-    z <- minimumR(data, space= space, x,x)
+    space=ceiling(lengthData/8)
+    space=ceiling(lengthData/10)
+    space=30
+    print(paste("space= ",space))
+    x <- seq(newMax_second_slope,lengthData, by=aby)
+    z <- minimumR(data, space= space, x,x,second_slope)
   }
   return(z)
+}
+
+
+#' get the intersection between tangente and plateau
+#' 
+#' \code{\link{getIntersectionForRoughnessAgainstLengthscale}} get the intersection between tangente and plateau
+#' @param AFMImageAnalyser an \code{\link{AFMImageAnalyser}} to get Roughness against lenghtscale calculation
+#' @param minValue index of the lowest point to be used for the tangent
+#' @param maxValue index of the highest point to be used for the tangent
+#' @param second_slope a boolean to manage first or second slope in the roughness against lenghtscale curve
+#' @return a \code{\link{AFMImagePSDSlopesAnalysis}}
+#' @author M.Beauvais
+#' @export
+getIntersectionForRoughnessAgainstLengthscale<-function(AFMImageAnalyser, minValue, maxValue, second_slope=FALSE){
+  # sampleName<-basename(AFMImageAnalyser@AFMImage@fullfilename)
+  # exportDirectory<-paste(dirname(AFMImageAnalyser@AFMImage@fullfilename), "outputs", sep="/")
+  
+  data<-getSimplifiedRoughnessAgainstLenghscale(AFMImageAnalyser)
+  data$r<-as.numeric(data$r)
+  
+  aval<-max(data$r)
+  index<-which(data$r<= aval)[1]
+  
+  lengthData<-length(data$r)-index
+  print(paste("lengthData=",lengthData))
+  
+  lengthData<-nrow(data)
+  
+  
+  minimumR <- function(data, x1, x2) {
+    lengthData<-nrow(data)
+    
+    aorigin<-0
+    borigin <- data[lengthData]$roughness
+    #print(borigin)
+    
+    finalres2=c()
+    
+    
+    if ((x1<1)||(x2<1)||(x1>lengthData)||(x2>lengthData)||(x1==x2)) {
+      inter <- data[1]$r
+    } else{
+      if (x1<x2) {
+        myx=data[seq(x1,x2)]$r
+        myy=data[seq(x1,x2)]$roughness
+      }
+      if (x1>x2) {
+        myx=data[seq(x2,x1)]$r
+        myy=data[seq(x2,x1)]$roughness
+      }    
+      slope=(myy[2]-myy[1])/(myx[2]-myx[1])
+      yintersept = myy[1] - slope * myx[1]
+      
+      res <- lm(myy~myx)
+      b<-unname(res$coefficients[1])
+      a<-unname(res$coefficients[2])
+      inter <- (borigin-b)/a
+      slope <- a
+      yintersept <- b
+      finalres=c(inter, x1, x2, borigin, slope, yintersept)
+      print(finalres)
+      # print(paste(a,b))
+      # print(paste(myx[1],myx[2],myy[1],myy[2]))
+    }
+    
+    AFMImagePSDSlopesAnalysis = new("AFMImagePSDSlopesAnalysis")
+    AFMImagePSDSlopesAnalysis@lc=finalres[1]
+    AFMImagePSDSlopesAnalysis@tangente_point1=finalres[2]
+    AFMImagePSDSlopesAnalysis@tangente_point2=finalres[3]
+    AFMImagePSDSlopesAnalysis@wsat=finalres[4]
+    AFMImagePSDSlopesAnalysis@slope=finalres[5]
+    AFMImagePSDSlopesAnalysis@yintersept=finalres[6]
+    #print(AFMImagePSDSlopesAnalysis)
+    return(AFMImagePSDSlopesAnalysis)
+  }
+  
+  
+  AFMImagePSDSlopesAnalysis <- minimumR(data, minValue,maxValue)
+  return(AFMImagePSDSlopesAnalysis)
 }
 
 

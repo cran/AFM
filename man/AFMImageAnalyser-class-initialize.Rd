@@ -5,9 +5,10 @@
 \alias{initialize,AFMImageAnalyser-method}
 \title{Constructor method of AFMImageAnalyser Class.}
 \usage{
-\S4method{initialize}{AFMImageAnalyser}(.Object, AFMImage, variogramAnalysis,
-  psdAnalysis, fdAnalysis, networksAnalysis, threeDimensionAnalysis, mean,
-  variance, TotalRrms, Ra, fullfilename)
+\S4method{initialize}{AFMImageAnalyser}(.Object, AFMImage,
+  variogramAnalysis, psdAnalysis, fdAnalysis, gaussianMixAnalysis,
+  networksAnalysis, threeDimensionAnalysis, mean, variance, TotalRrms, Ra,
+  fullfilename)
 }
 \arguments{
 \item{.Object}{an AFMImageAnalyser object}
@@ -19,6 +20,8 @@
 \item{psdAnalysis}{\code{\link{AFMImagePSDAnalysis}}}
 
 \item{fdAnalysis}{\code{\link{AFMImageFractalDimensionsAnalysis}}}
+
+\item{gaussianMixAnalysis}{\code{\link{AFMImageGaussianMixAnalysis}}}
 
 \item{networksAnalysis}{\code{\link{AFMImageNetworksAnalysis}}}
 

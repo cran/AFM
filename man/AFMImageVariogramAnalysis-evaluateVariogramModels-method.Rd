@@ -3,7 +3,6 @@
 \docType{methods}
 \name{evaluateVariogramModels}
 \alias{evaluateVariogramModels}
-\alias{evaluateVariogramModels}
 \alias{evaluateVariogramModels,AFMImageVariogramAnalysis-method}
 \title{evaluateVariogramModels method to evaluate the basic variogram models}
 \usage{

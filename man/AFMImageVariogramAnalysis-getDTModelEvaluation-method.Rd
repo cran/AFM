@@ -3,7 +3,6 @@
 \docType{methods}
 \name{getDTModelEvaluation}
 \alias{getDTModelEvaluation}
-\alias{getDTModelEvaluation}
 \alias{getDTModelEvaluation,AFMImageVariogramAnalysis-method}
 \title{getDTModelEvaluation method}
 \usage{

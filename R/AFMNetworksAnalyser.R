@@ -270,29 +270,24 @@ setMethod(f="calculateNetworks", "AFMImageNetworksAnalysis",
 #' library(AFM)
 #' library(parallel)
 #' 
-#' # dir = ""
-#' # filename= ""
-#' AFMImage<-importFromNanoscope(paste0(dir,filename))
-#' AFMImageNetworksAnalysis = new("AFMImageNetworksAnalysis")
-#' AFMImageNetworksAnalysis@heightNetworksslider=10
-#' AFMImageNetworksAnalysis@filterNetworkssliderMin=150
-#' AFMImageNetworksAnalysis@filterNetworkssliderMax=300
-#' AFMImageNetworksAnalysis@smallBranchesTreatment=TRUE
-#' AFMImageNetworksAnalysis<-transformAFMImageForNetworkAnalysis(AFMImageNetworksAnalysis, AFMImage)
-#' numWorkers <- parallel::detectCores()
-#' cl <- makeCluster(numWorkers,outfile="")
-#' AFMImageNetworksAnalysis<-identifyNodesWithCircles(cl=cl, 
-#'     AFMImageNetworksAnalysis= AFMImageNetworksAnalysis)
-#' AFMImageNetworksAnalysis<-identifyEdgesFromCircles(cl=cl,
-#'     AFMImageNetworksAnalysis= AFMImageNetworksAnalysis,
-#'     MAX_DISTANCE = 40)
-#' AFMImageNetworksAnalysis<-identifyIsolatedNodes(AFMImageNetworksAnalysis)
-#' AFMImageNetworksAnalysis<-createGraph(AFMImageNetworksAnalysis, fusioned=FALSE)
-#' AFMImageNetworksAnalysis<-calculateShortestPaths(cl=cl,
-#'     AFMImageNetworksAnalysis= AFMImageNetworksAnalysis)
+#' data(AFMImageCollagenNetwork)
+#' AFMImage<-AFMImageCollagenNetwork
+#' AFMIA = new("AFMImageNetworksAnalysis")
+#' AFMIA@heightNetworksslider=10
+#' AFMIA@filterNetworkssliderMin=150
+#' AFMIA@filterNetworkssliderMax=300
+#' AFMIA@smallBranchesTreatment=TRUE
+#' clExist<-TRUE
+#' cl <- makeCluster(2,outfile="")
+#' AFMIA<-transformAFMImageForNetworkAnalysis(AFMImageNetworksAnalysis=AFMIA,AFMImage= AFMImage)
+#' AFMIA<-identifyNodesAndEdges(cl=cl,AFMImageNetworksAnalysis= AFMIA,maxHeight= 300)
+#' AFMIA<-identifyEdgesFromCircles(cl=cl,AFMImageNetworksAnalysis= AFMIA, MAX_DISTANCE = 75)
+#' AFMIA<-identifyIsolatedNodes(AFMIA)
+#' AFMIA<-createGraph(AFMIA)
+#' AFMIA<-calculateShortestPaths(cl=cl, AFMImageNetworksAnalysis=AFMIA)
+#' AFMIA<-calculateNetworkParameters(AFMImageNetworksAnalysis=AFMIA, AFMImage=AFMImage)
+#' AFMIA<-calculateHolesCharacteristics(AFMImageNetworksAnalysis=AFMIA)
 #' stopCluster(cl)
-#' networkParameters<-getNetworkParameters(AFMImageNetworksAnalysis, AFMImage)
-#' print(networkParameters)
 #' }
 setGeneric(name= "getNetworkParameters", 
            def= function(AFMImageNetworksAnalysis, AFMImage) {
@@ -336,7 +331,7 @@ setMethod(f="getNetworkParameters", "AFMImageNetworksAnalysis",
             
             #Nodes (degree>2 or =1) / surface area
             numberOfNodesPerSurfaceArea<-(nrow(verticesAnalysisDT[node_degree>2])+nrow(verticesAnalysisDT[node_degree==1]))/surfaceArea
-
+            
             #Mean physical distance between nodes (degree>2)
             MeanPhysicalDistanceBetweenNodes<-mean(directedConnectedNodesDT$physicalDistance)
             
@@ -1660,7 +1655,7 @@ identifyNodesWithCircles<-function(...,AFMImageNetworksAnalysis) {
       print(resDT2)
       connectedIslandsDT<-merge(connectedIslandsDT, resDT2, by="cluster", allow.cartesian=TRUE)
       connectedIslandsDT$dist<-sapply(1:nrow(connectedIslandsDT),function(i) sp::spDistsN1(pts=as.matrix(connectedIslandsDT[i,2:3,with=FALSE]),
-                                                                                       pt=as.matrix(connectedIslandsDT[i,4:5,with=FALSE]),longlat=FALSE))
+                                                                                           pt=as.matrix(connectedIslandsDT[i,4:5,with=FALSE]),longlat=FALSE))
       connectedIslandsDT[,maxdist:=max(dist), by=list(cluster)]
       connectedIslandsDT$keep<-sapply(1:nrow(connectedIslandsDT),function(i) if (connectedIslandsDT[i,6,with=FALSE] == connectedIslandsDT[i,7,with=FALSE]) return(TRUE) else return(FALSE))
       connectedIslandsDT
@@ -1768,10 +1763,10 @@ identifyNodesWithCircles<-function(...,AFMImageNetworksAnalysis) {
     # displayIn3D(AFMImageNetworksAnalysis@binaryAFMImage, noLight=TRUE)
     
   } 
-    AFMImageNetworksAnalysis@binaryAFMImageWithCircles<-copy(newCircleAFMImage2)
-    avgDT$keep<-rep(TRUE, nrow(avgDT))
-    AFMImageNetworksAnalysis@circlesTable<-copy(unique(avgDT))
-    return(AFMImageNetworksAnalysis)
+  AFMImageNetworksAnalysis@binaryAFMImageWithCircles<-copy(newCircleAFMImage2)
+  avgDT$keep<-rep(TRUE, nrow(avgDT))
+  AFMImageNetworksAnalysis@circlesTable<-copy(unique(avgDT))
+  return(AFMImageNetworksAnalysis)
   
 }
 
@@ -1871,7 +1866,7 @@ existsSegment<-function(AFMImage, segment) {
 #' @export
 #' @author M.Beauvais
 getCircleSpatialPoints<-function(binaryAFMImage, center, circleRadius) {
-
+  
   if (circleRadius<0) {
     stop("getCircleSpatialPoints - the radius is inferior to 0")
     return()
@@ -1907,7 +1902,7 @@ getCircleSpatialPoints<-function(binaryAFMImage, center, circleRadius) {
         return(data.table(x1=min, x2=uniqueX2[i]))
       }
     },centerAllpoints, uniqueX2)
-      
+    
     resDT<-rbindlist(res)
     #resDT<-rbind(resDT, data.table(x1=center$lon,x2=center$lat)
     centerAllpoints<-SpatialPoints(cbind(
@@ -2189,7 +2184,7 @@ displayColoredNetworkWithVerticesSize<-function(AFMImageNetworksAnalysis, fullfi
   #             vertex.shape="circle", vertex.size=vertexsize, vertex.label=NA, vertex.color=vertexcolor, vertex.frame.color=vertexcolor,
   #             edge.color="grey"
   # )
-
+  
   
   
   # calculate edge weigth
@@ -2245,7 +2240,7 @@ identifyNodesAndEdges<-function(..., AFMImageNetworksAnalysis,maxHeight){
   force(AFMImageNetworksAnalysis)
   filename<-lon<-lat<-minDistance<-from_cluster<-to_cluster<-total<-vid<-NULL
   meanLon<-meanLat<-NULL
-    
+  
   args<-names(list(...))
   print(args)
   if (is.null(args)) {
@@ -2263,7 +2258,7 @@ identifyNodesAndEdges<-function(..., AFMImageNetworksAnalysis,maxHeight){
   }else{
     print("Not using parallel")
   }
-
+  
   binaryAFMImage<-copy(AFMImageNetworksAnalysis@binaryAFMImage)
   #displayIn3D(binaryAFMImage, noLight=TRUE)
   newCircleAFMImage<-copy(AFMImageNetworksAnalysis@binaryAFMImage)
@@ -2277,7 +2272,11 @@ identifyNodesAndEdges<-function(..., AFMImageNetworksAnalysis,maxHeight){
   clusterLon<-clusterLat<-cluster<-IDX<-keepThinPoints<-meandist<-NULL
   
   circlesMatrixFilename<-paste0(filename, "-circlesMatrix.RData")
-  circlesMatrix<-getMaxCircleMatrix(cl=cl, newCircleAFMImage = newCircleAFMImage,CIRCLE_RADIUS_INIT=CIRCLE_RADIUS_INIT)
+  if (clExist) {
+    circlesMatrix<-getMaxCircleMatrix(cl=cl, newCircleAFMImage = newCircleAFMImage,CIRCLE_RADIUS_INIT=CIRCLE_RADIUS_INIT)
+  }else{
+    circlesMatrix<-getMaxCircleMatrix(newCircleAFMImage = newCircleAFMImage,CIRCLE_RADIUS_INIT=CIRCLE_RADIUS_INIT)
+  }
   # save(circlesMatrix,file= paste0(dirOutput,circlesMatrixFilename))
   #load(file= paste0(dirOutput,circlesMatrixFilename))
   
@@ -2765,8 +2764,11 @@ identifyNodesAndEdges<-function(..., AFMImageNetworksAnalysis,maxHeight){
                 # eliminate triangles
                 allVertices=unique(c(vedges$from, vedges$to))
                 allVertices
-                
-                vedges<-simplifyNetwork(cl=cl, allVertices=allVertices, allEdges=vedges)
+                if(clExist) {
+                  vedges<-simplifyNetwork(cl=cl, allVertices=allVertices, allEdges=vedges)
+                }else{
+                  vedges<-simplifyNetwork(allVertices=allVertices, allEdges=vedges)
+                }
                 vedges<-vedges[!vedges$remove,]
                 
                 # no edge between clusters that are connected
@@ -2799,7 +2801,11 @@ identifyNodesAndEdges<-function(..., AFMImageNetworksAnalysis,maxHeight){
                 vedges2$to<- vedges2$to_cluster
                 
                 allVertices2=unique(c(vedges2$from, vedges2$to))
-                vedges2<-simplifyNetwork(cl=cl, allVertices=allVertices2, allEdges=vedges2)
+                if(clExist) {
+                  vedges2<-simplifyNetwork(cl=cl, allVertices=allVertices2, allEdges=vedges2)
+                }else{
+                  vedges2<-simplifyNetwork(allVertices=allVertices2, allEdges=vedges2)
+                }
                 vedges2<-vedges2[!vedges2$remove,]
                 vedges2
                 
@@ -3369,6 +3375,7 @@ identifyNodesAndEdges<-function(..., AFMImageNetworksAnalysis,maxHeight){
   AFMImageNetworksAnalysis@binaryAFMImage<-copy(binaryAFMImage)
   AFMImageNetworksAnalysis@binaryAFMImageWithCircles<-copy(newCircleAFMImage2)
   AFMImageNetworksAnalysis@circlesTable<-copy(unique(avgDT))
+  
   return(AFMImageNetworksAnalysis)  
 }
 
@@ -3436,7 +3443,7 @@ identifyEdgesFromCircles<-function(...,AFMImageNetworksAnalysis, MAX_DISTANCE=40
     otherNodes$dist<-sp::spDistsN1(pts=matrix(c(otherNodes$lon, otherNodes$lat), ncol=2), pt=c(center1$lon, center1$lat), longlat=FALSE)
     otherNodes<-otherNodes[with(otherNodes, order(otherNodes$dist)), ]
     otherNodes<-otherNodes[otherNodes$dist<MAX_DISTANCE,]
-
+    
     
     
     if (nrow(otherNodes)!=0){
@@ -3501,7 +3508,7 @@ identifyEdgesFromCircles<-function(...,AFMImageNetworksAnalysis, MAX_DISTANCE=40
     allEdges$to.coords.x1<-sapply(1:nrow(allEdges),function(i) getCoordinatesFromVertexId(allEdges[i,c("to"),with=FALSE])$coords.x1)
     allEdges$to.coords.x2<-sapply(1:nrow(allEdges),function(i) getCoordinatesFromVertexId(allEdges[i,c("to"),with=FALSE])$coords.x2)
     allEdges$dist<-sapply(1:nrow(allEdges),function(i) sp::spDistsN1(pts=as.matrix(cbind(allEdges[i,]$from.coords.x1,allEdges[i,]$from.coords.x2)),
-                                                                 pt=as.matrix(cbind(allEdges[i,]$to.coords.x1,allEdges[i,]$to.coords.x2)),longlat=FALSE))
+                                                                     pt=as.matrix(cbind(allEdges[i,]$to.coords.x1,allEdges[i,]$to.coords.x2)),longlat=FALSE))
     
     allEdges$keep<-rep(TRUE, nrow(allEdges))
     
@@ -3532,7 +3539,11 @@ identifyEdgesFromCircles<-function(...,AFMImageNetworksAnalysis, MAX_DISTANCE=40
     print(paste0("totalNumberOfEdges=",totalNumberOfEdges))
     
     print("simplify network")
-    allEdges<-simplifyNetwork(cl=cl, allVertices=allVertices, allEdges=allEdges)
+    if(clExist) {
+      allEdges<-simplifyNetwork(cl=cl, allVertices=allVertices, allEdges=allEdges)
+    }else{
+      allEdges<-simplifyNetwork(allVertices=allVertices, allEdges=allEdges)
+    }
     # allEdges
     # allEdges[keep %in% c(FALSE),]
     print("simplify ended")
@@ -3595,8 +3606,8 @@ fusionCloseNodes<-function(AFMImageNetworksAnalysis) {
     radiusVector<-center$circleRadius+AFMImageNetworksAnalysis@circlesTable$circleRadius
     
     distVector<-sp::spDistsN1(pts=matrix(c(AFMImageNetworksAnalysis@circlesTable$lon,AFMImageNetworksAnalysis@circlesTable$lat),ncol=2),
-                          pt=matrix(c(center$lon,center$lat),ncol=2),
-                          longlat=FALSE)
+                              pt=matrix(c(center$lon,center$lat),ncol=2),
+                              longlat=FALSE)
     intersectVector<-distVector-radiusVector-2
     
     # print(radiusVector)
@@ -4045,7 +4056,7 @@ calculateNetworkParameters<-function(AFMImageNetworksAnalysis, AFMImage) {
     
     MeanPhysicalSizeOfTerminalNodes<-mean(AFMImageNetworksAnalysis@circlesTable[vid %in% verticesAnalysisDT[node_degree==1,]$vid,]$circleRadius)
     SDPhysicalSizeOfTerminalNodes<-sd(AFMImageNetworksAnalysis@circlesTable[vid %in% verticesAnalysisDT[node_degree==1,]$vid,]$circleRadius)
-
+    
     # graph density
     print("calculating graph density")
     graphDensity<-graph.density(g)
@@ -4434,6 +4445,7 @@ simplifyNetwork<-function(..., allVertices, allEdges){
   print("resRemoveEdge")
   #print(resRemoveEdge)
   allEdges$keep<-rep(TRUE, nrow(allEdges))
+  allEdges$remove<-rep(FALSE, nrow(allEdges))
   indexOfEdgeToBeRemoved<-1
   for(indexOfEdgeToBeRemoved in seq(1,nrow(resRemoveEdge))) {
     allEdges[(allEdges$from %in% c(resRemoveEdge[indexOfEdgeToBeRemoved,]$from) & 
@@ -4462,7 +4474,7 @@ generatePolygonEnvelope<-function(AFMImageNetworksAnalysis, centers, radius){
   # check if center and radius are in image
   # TBD
   binaryAFMImage<-AFMImageNetworksAnalysis@binaryAFMImage
-
+  
   x1<-x2<-c()
   
   #i<-1

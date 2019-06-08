@@ -5,7 +5,6 @@
 \alias{AFMImageVariogramSlopesAnalysis-class}
 \alias{AFMImageVariogramSlopesAnalysis}
 \alias{initialize,AFMImageVariogramSlopesAnalysis-method}
-\alias{AFMImageVariogramSlopesAnalysis}
 \title{AFM Image psd slope analysis}
 \usage{
 AFMImageVariogramSlopesAnalysis()
@@ -19,10 +18,6 @@ AFMImageVariogramSlopesAnalysis()
 }
 \description{
 \code{AFMImageVariogramSlopesAnalysis} stores the analysis of the second slope in roughness against lenghtscale
-
-Constructor method of AFMImageVariogramSlopesAnalysis Class.
-
-Wrapper function AFMImageVariogramSlopesAnalysis
 }
 \section{Slots}{
 

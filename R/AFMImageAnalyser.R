@@ -30,6 +30,7 @@ if(getRversion() >= "3.1.0") utils::suppressForeignCheck(c("h", "..density.."))
 #' @slot variogramAnalysis \code{\link{AFMImageVariogramAnalysis}}
 #' @slot psdAnalysis \code{\link{AFMImagePSDAnalysis}}
 #' @slot fdAnalysis \code{\link{AFMImageFractalDimensionsAnalysis}}
+#' @slot gaussianMixAnalysis \code{\link{AFMImageGaussianMixAnalysis}}
 #' @slot networksAnalysis \code{\link{AFMImageNetworksAnalysis}}
 #' @slot mean  the mean of heights of the \code{\link{AFMImage}}
 #' @slot variance the variance of heights of the \code{\link{AFMImage}}
@@ -50,6 +51,7 @@ AFMImageAnalyser<-setClass("AFMImageAnalyser",
                              variogramAnalysis="AFMImageVariogramAnalysis", 
                              psdAnalysis="AFMImagePSDAnalysis",
                              fdAnalysis="AFMImageFractalDimensionsAnalysis",
+                             gaussianMixAnalysis="AFMImageGaussianMixAnalysis",
                              networksAnalysis="AFMImageNetworksAnalysis",
                              threeDimensionAnalysis="AFMImage3DModelAnalysis",
                              mean="numeric", 
@@ -66,6 +68,7 @@ AFMImageAnalyser<-setClass("AFMImageAnalyser",
 #' @param variogramAnalysis \code{\link{AFMImageVariogramAnalysis}}
 #' @param psdAnalysis \code{\link{AFMImagePSDAnalysis}}
 #' @param fdAnalysis \code{\link{AFMImageFractalDimensionsAnalysis}}
+#' @param gaussianMixAnalysis \code{\link{AFMImageGaussianMixAnalysis}}
 #' @param networksAnalysis \code{\link{AFMImageNetworksAnalysis}}
 #' @param threeDimensionAnalysis \code{\link{AFMImage3DModelAnalysis}}
 #' @param mean  the mean of heights of the \code{\link{AFMImage}}
@@ -80,6 +83,7 @@ setMethod("initialize", "AFMImageAnalyser", function(.Object,
                                                      variogramAnalysis, 
                                                      psdAnalysis,
                                                      fdAnalysis,
+                                                     gaussianMixAnalysis,
                                                      networksAnalysis,
                                                      threeDimensionAnalysis,
                                                      mean, 
@@ -92,6 +96,7 @@ setMethod("initialize", "AFMImageAnalyser", function(.Object,
   if (!missing(variogramAnalysis)) .Object@variogramAnalysis<-variogramAnalysis
   if (!missing(psdAnalysis)) .Object@psdAnalysis<-psdAnalysis
   if (!missing(fdAnalysis)) .Object@fdAnalysis<-fdAnalysis
+  if (!missing(gaussianMixAnalysis)) .Object@gaussianMixAnalysis<-gaussianMixAnalysis
   if (!missing(networksAnalysis)) .Object@networksAnalysis<-networksAnalysis
   if (!missing(threeDimensionAnalysis)) .Object@threeDimensionAnalysis<-threeDimensionAnalysis
   if (!missing(mean)) .Object@mean<-mean

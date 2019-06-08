@@ -5,7 +5,6 @@
 \alias{AFMImageVariogramModel-class}
 \alias{AFMImageVariogramModel}
 \alias{initialize,AFMImageVariogramModel-method}
-\alias{AFMImageVariogramModel}
 \title{AFM Image Variogram Model class}
 \usage{
 AFMImageVariogramModel()
@@ -37,10 +36,6 @@ AFMImageVariogramModel()
 }
 \description{
 \code{AFMImageVariogramModel}stores the evaluation of one experimental variogram model
-
-Constructor method of AFMImageVariogramModel Class.
-
-Wrapper function AFMImageVariogramModel
 }
 \section{Slots}{
 

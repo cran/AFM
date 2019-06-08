@@ -5,22 +5,18 @@
 \alias{AFMImageVariogramAnalysis-class}
 \alias{AFMImageVariogramAnalysis}
 \alias{initialize,AFMImageVariogramAnalysis-method}
-\alias{AFMImageVariogramAnalysis}
-\alias{AFMImageVariogramAnalysis-class}
 \alias{variogramModels,AFMImageVariogramAnalysis-method}
 \alias{variogramModels}
-\alias{AFMImageVariogramAnalysis-class}
 \alias{omnidirectionalVariogram,AFMImageVariogramAnalysis-method}
 \alias{omnidirectionalVariogram}
-\alias{AFMImageVariogramAnalysis-class}
 \alias{directionalVariograms,AFMImageVariogramAnalysis-method}
 \alias{directionalVariograms}
 \title{AFM image variogram analysis class}
 \usage{
 AFMImageVariogramAnalysis(sampleFitPercentage)
 
-\S4method{initialize}{AFMImageVariogramAnalysis}(.Object, sampleFitPercentage,
-  updateProgress)
+\S4method{initialize}{AFMImageVariogramAnalysis}(.Object,
+  sampleFitPercentage, updateProgress)
 
 AFMImageVariogramAnalysis(sampleFitPercentage)
 
@@ -47,16 +43,6 @@ directionalVariograms(object)
 }
 \description{
 \code{AFMImageVariogramAnalysis} manages the variogram analysis of an \code{\link{AFMImage}}
-
-Constructor method of AFMImageVariogramAnalysis Class.
-
-Wrapper function AFMImageVariogramAnalysis
-
-Method \code{variogramModels} returns a list of variogram model evaluation
-
-Method \code{omnidirectionalVariogram} returns the omnidirectional variogram
-
-Method \code{directionalVariograms} returns the directional variograms
 }
 \section{Slots}{
 

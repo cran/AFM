@@ -474,7 +474,7 @@ generateAFMImageReport<-function(AFMImageAnalyser, reportFullfilename, isCheckRe
 #' @author M.Beauvais
 #' @export
 printVariogramModelEvaluations<-function(AFMImageAnalyser, sampleDT, numberOfModelsPerPage){
-  
+  error<-predicted<-realH<-nbPointsPercent<-numberOfPoints<-NULL
   #####################
   # new page for experimental variogram and models
   experimentalVariogramDT<-AFMImageAnalyser@variogramAnalysis@omnidirectionalVariogram
@@ -494,6 +494,7 @@ printVariogramModelEvaluations<-function(AFMImageAnalyser, sampleDT, numberOfMod
   
   
   allVarioModels<-str_sub(sampleDT$model,-3)
+  i<-1
   for (i in seq(1:length(allVarioModels))) {
     indexInPage<-i%%numberOfModelsPerPage
     
@@ -533,6 +534,38 @@ printVariogramModelEvaluations<-function(AFMImageAnalyser, sampleDT, numberOfMod
     withoutLegend<-TRUE
     colLimit<-length(cuts)+3
     cols <- getSpplotColors(colLimit) 
+    
+    
+    # density plot for percent error (over total amplitude)
+    amplitudeReal<-abs(max(AFMImageAnalyser@AFMImage@data$h)-min(AFMImageAnalyser@AFMImage@data$h))
+    
+    statsHeightsDT<-data.table(realH=AFMImageAnalyser@AFMImage@data$h, predicted = as.vector(unlist(part_valid_pr["var1.pred"]@data)))
+    
+    statsHeightsDT[,error:=(predicted-realH)/amplitudeReal,]
+    statsHeightsDT
+    resStatsDT<-data.table(step=c(0), numberOfPoints=c(0))
+    totalPoints<-length(statsHeightsDT$error)
+    for (i in seq(0,max(statsHeightsDT$error), by=(max(statsHeightsDT$error)/20))) {
+      nbPoints<-length(statsHeightsDT$error[abs(statsHeightsDT$error)<i])
+      resStatsDT<-rbind(resStatsDT, data.table(step=c(i), numberOfPoints=c(nbPoints)))
+    }
+    
+    resStatsDT<-resStatsDT[-c(1,2),]
+    resStatsDT
+    
+    resStatsDT[, nbPointsPercent:=numberOfPoints/totalPoints,]
+    resStatsDT
+    
+    
+    errorData<-data.frame(error=statsHeightsDT$error)
+    
+    
+    
+    
+    
+    
+    
+    
     
     predictedspplotfullfilename<-getSpplotPredictedImageFullfilename(tempdir(), sampleName, modelName)
     saveSpplotFromKrige(predictedspplotfullfilename, modelName, part_valid_pr,cuts, withoutLegend = TRUE)  
@@ -576,7 +609,7 @@ printVariogramModelEvaluations<-function(AFMImageAnalyser, sampleDT, numberOfMod
     myvgm$id=rep(factor("var1"),experimentalVariogramDTnrow)
     
     begin<-(indexInPage-1)*2+1
-    vp3<-viewport(layout.pos.row = begin:(begin+1), layout.pos.col = 1, width=200, height=200)
+    vp3<-viewport(layout.pos.row = begin:(begin+1), layout.pos.col = 1, width=100, height=100)
     vgLine <- rbind(
       cbind(variogramLine(vgm1, maxdist = max(myvgm$dist)), id = "Raw")
     )
@@ -587,6 +620,27 @@ printVariogramModelEvaluations<-function(AFMImageAnalyser, sampleDT, numberOfMod
     p1 <- p1 + guides(colour=FALSE)
     p1 <- p1 + expand_limits(y = 0)
     print(p1,vp=vp3)
+    
+    grid.newpage() 
+    vp5<-viewport(layout.pos.row = begin:(begin+2), layout.pos.col = 1, width=200, height=200)
+
+    p1<-ggplot(myvgm, aes(x = dist, y = gamma, colour = id)) +  geom_line(data = vgLine) + geom_point()   
+    p1 <- ggplot(errorData,aes(error, fill =c(1))) + geom_density(alpha = 0.2) +
+      guides(fill=FALSE)+ 
+      theme(legend.position="none")
+    
+    
+    # p1 + ylab("semivariance")
+    # p1 <- p1 + xlab("distance (nm)")
+    # p1 <- p1 + ggtitle("Semivariogram")
+    # p1 <- p1 + guides(colour=FALSE)
+    # p1 <- p1 + expand_limits(y = 0)
+    print(p1,vp=vp5)
+    
+    plotVariogramModelTable<-getGgplotFromDataTable(resStatsDT)
+    vp6<-viewport(layout.pos.row = (indexInPage-1)*2+1+1, layout.pos.col = 2:3)
+    print(vp=vp6, plotVariogramModelTable, row.names= FALSE, include.rownames=FALSE)
+    
     
   }
   
@@ -776,12 +830,26 @@ exportPSDImagesForReport<-function(AFMImageAnalyser, AFMImage, exportDirectory) 
     p1 <- p1 + ylab("roughness (nm)")
     p1 <- p1 + xlab("lengthscale (nm)")
     p1 <- p1 + guides(colour=FALSE)  
+    
+    aIntercept<-AFMImageAnalyser@psdAnalysis@AFMImagePSDSlopesAnalysis2@yintersept
+    aSlope<-AFMImageAnalyser@psdAnalysis@AFMImagePSDSlopesAnalysis2@slope
+    
+    if (length(AFMImageAnalyser@psdAnalysis@AFMImagePSDSlopesAnalysis2)!=0){
+      p1 <- p1 + geom_abline(intercept = aIntercept,
+                             slope = aSlope,
+                             size=1.2)  
+    }
+    print(paste(aIntercept, aSlope))
+
     pngFilename=paste(filename,"roughness-against-lengthscale.png",sep="-")
     exportpngFullFilename<-paste(exportDirectory, pngFilename, sep="/")
     print(paste("saving", basename(exportpngFullFilename)))
     png(filename=exportpngFullFilename, units = "px", width=800, height=800)
     print(p1)
     dev.off()
+    
+    
+    
     
     # focus on the first 10nm
     newdata<-data[r<10,]
@@ -792,6 +860,11 @@ exportPSDImagesForReport<-function(AFMImageAnalyser, AFMImage, exportDirectory) 
     p1 <- p1 + ylab("roughness (nm)")
     p1 <- p1 + xlab("lengthscale (nm)")
     p1 <- p1 + guides(colour=FALSE)
+    # if (length(AFMImageAnalyser@psdAnalysis@AFMImagePSDSlopesAnalysis1)!=0){
+    #   p1 <- p1 + geom_abline(intercept = AFMImageAnalyser@psdAnalysis@AFMImagePSDSlopesAnalysis1@yintersept,
+    #                          slope = AFMImageAnalyser@psdAnalysis@AFMImagePSDSlopesAnalysis1@slope,
+    #                          size=1.2)  
+    # }
     pngFilename=paste(filename,"roughness-against-lengthscale-10nm.png",sep="-")
     exportpngFullFilename<-paste(exportDirectory, pngFilename, sep="/")
     print(paste("saving", basename(exportpngFullFilename)))

@@ -5,13 +5,12 @@
 \alias{AFMImageFractalDimensionMethod-class}
 \alias{AFMImageFractalDimensionMethod}
 \alias{initialize,AFMImageFractalDimensionMethod-method}
-\alias{AFMImageFractalDimensionMethod}
 \title{AFM image fractal dimension method class}
 \usage{
 AFMImageFractalDimensionMethod(fd_method, fd, fd_scale)
 
-\S4method{initialize}{AFMImageFractalDimensionMethod}(.Object, fd_method, fd,
-  fd_scale)
+\S4method{initialize}{AFMImageFractalDimensionMethod}(.Object, fd_method,
+  fd, fd_scale)
 
 AFMImageFractalDimensionMethod(fd_method, fd, fd_scale)
 }
@@ -26,10 +25,6 @@ AFMImageFractalDimensionMethod(fd_method, fd, fd_scale)
 }
 \description{
 \code{AFMImageFractalDimensionMethod} stores calculation from one fractal dimension method
-
-Constructor method of AFMImageFractalDimensionMethod Class.
-
-Wrapper function AFMImageFractalDimensionMethod
 }
 \section{Slots}{
 

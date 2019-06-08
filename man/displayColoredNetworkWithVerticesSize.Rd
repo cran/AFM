@@ -4,7 +4,8 @@
 \alias{displayColoredNetworkWithVerticesSize}
 \title{displayColoredNetworkWithVerticesSize}
 \usage{
-displayColoredNetworkWithVerticesSize(AFMImageNetworksAnalysis, fullfilename)
+displayColoredNetworkWithVerticesSize(AFMImageNetworksAnalysis,
+  fullfilename)
 }
 \arguments{
 \item{AFMImageNetworksAnalysis}{a \code{\link{AFMImageNetworksAnalysis}}}

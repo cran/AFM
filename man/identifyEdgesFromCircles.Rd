@@ -4,7 +4,8 @@
 \alias{identifyEdgesFromCircles}
 \title{display the network of nodes and edges}
 \usage{
-identifyEdgesFromCircles(..., AFMImageNetworksAnalysis, MAX_DISTANCE = 40)
+identifyEdgesFromCircles(..., AFMImageNetworksAnalysis,
+  MAX_DISTANCE = 40)
 }
 \arguments{
 \item{...}{cl: a cluster object from the parallel package}

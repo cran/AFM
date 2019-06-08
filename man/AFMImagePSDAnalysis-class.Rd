@@ -5,26 +5,18 @@
 \alias{AFMImagePSDAnalysis-class}
 \alias{AFMImagePSDAnalysis}
 \alias{initialize,AFMImagePSDAnalysis-method}
-\alias{AFMImagePSDAnalysis}
-\alias{AFMImagePSDAnalysis-class}
 \alias{psd1d_breaks,AFMImagePSDAnalysis-method}
 \alias{psd1d_breaks}
-\alias{AFMImagePSDAnalysis-class}
 \alias{psd2d_maxHighLengthScale,AFMImagePSDAnalysis-method}
 \alias{psd2d_maxHighLengthScale}
-\alias{AFMImagePSDAnalysis-class}
 \alias{psd2d_truncHighLengthScale,AFMImagePSDAnalysis-method}
 \alias{psd2d_truncHighLengthScale}
-\alias{AFMImagePSDAnalysis-class}
 \alias{psd1d,AFMImagePSDAnalysis-method}
 \alias{psd1d}
-\alias{AFMImagePSDAnalysis-class}
 \alias{psd2d,AFMImagePSDAnalysis-method}
 \alias{psd2d}
-\alias{AFMImagePSDAnalysis-class}
 \alias{roughnessAgainstLengthscale,AFMImagePSDAnalysis-method}
 \alias{roughnessAgainstLengthscale}
-\alias{AFMImagePSDAnalysis-class}
 \alias{intersections,AFMImagePSDAnalysis-method}
 \alias{intersections}
 \title{AFM image Power Spectrum Density analysis class}
@@ -70,24 +62,6 @@ intersections(object)
 }
 \description{
 \code{AFMImagePSDAnalysis} handles an \code{\link{AFMImage}} roughness against lenghscale analysis
-
-Constructor method of AFMImagePSDAnalysis Class.
-
-Wrapper function AFMImagePSDAnalysis
-
-Method \code{psd1d_breaks} returns a number of breaks to calculate PSD1D from PSD2D
-
-Method \code{psd2d_maxHighLengthScale} returns the maximum lengthscale to be managed by PSD2D
-
-Method \code{psd2d_truncHighLengthScale} returns if the lengthscale of PSD2D should be truncated
-
-Method \code{psd1d} returns a data.table of psd in 1D
-
-Method \code{psd2d} returns a data.table of psd in 1D
-
-Method \code{roughnessAgainstLengthscale} returns a data.table of roughnesses versus lengthscale
-
-Method \code{intersections} returns a intersection numeric value
 }
 \section{Slots}{
 
