@@ -4,8 +4,11 @@
 \alias{printVariogramModelEvaluations}
 \title{printVariogramModelEvaluations}
 \usage{
-printVariogramModelEvaluations(AFMImageAnalyser, sampleDT,
-  numberOfModelsPerPage)
+printVariogramModelEvaluations(
+  AFMImageAnalyser,
+  sampleDT,
+  numberOfModelsPerPage
+)
 }
 \arguments{
 \item{AFMImageAnalyser}{an \code{\link{AFMImageAnalyser}} to be used to produce report}

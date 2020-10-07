@@ -8,9 +8,7 @@
 \usage{
 evaluateVariogramModels(AFMImageVariogramAnalysis, AFMImage)
 
-
-  \S4method{evaluateVariogramModels}{AFMImageVariogramAnalysis}(AFMImageVariogramAnalysis,
-  AFMImage)
+\S4method{evaluateVariogramModels}{AFMImageVariogramAnalysis}(AFMImageVariogramAnalysis, AFMImage)
 }
 \arguments{
 \item{AFMImageVariogramAnalysis}{an object}
@@ -23,6 +21,7 @@ A \code{\link{AFMImageVariogramAnalysis}} method to handle the variogram analysi
 The variogram models used can be seen with the show.vgms() function from the \code{\link{gstat}} package.
 }
 \examples{
+\dontrun{
 library(AFM)
 
 data("AFMImageOfRegularPeaks")
@@ -52,5 +51,6 @@ mergedDT<-getDTModelEvaluation(variogramAnalysis)
 mergedDT
 sillRangeDT<-getDTModelSillRange(variogramAnalysis)
 sillRangeDT
+}
 
 }

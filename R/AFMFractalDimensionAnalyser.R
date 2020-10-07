@@ -132,14 +132,14 @@ setReplaceMethod(f="fractalDimensionMethods",
 #' @references  Gneiting2012, Tilmann Gneiting, Hana Sevcikova and Donald B. Percival 'Estimators of Fractal Dimension: Assessing the Roughness of Time Series and Spatial Data - Statistics in statistical Science, 2012, Vol. 27, No. 2, 247-277'
 #' @author M.Beauvais
 #' @rdname AFMFractalDimensionAnalyser-getFractalDimensions
-#' @export
 #' @seealso \code{\link{fractaldim}}
+#' @export
 #' @examples
+#' \dontrun{
 #' library(AFM)
-#' 
 #' data(AFMImageOfAluminiumInterface)
 #' print(getFractalDimensions(AFMImageOfAluminiumInterface))
-#
+#' }
 getFractalDimensions<-function(AFMImage, AFMImageFractalDimensionsAnalysis) {
   if (missing(AFMImageFractalDimensionsAnalysis)) {
     AFMImageFractalDimensionsAnalysis<-NULL

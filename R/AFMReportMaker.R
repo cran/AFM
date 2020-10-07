@@ -31,6 +31,7 @@ if(getRversion() >= "3.1.0") utils::suppressForeignCheck(c("r", "roughness", "di
 #' @author M.Beauvais
 #' @export
 #' @examples
+#' \dontrun{
 #' library(AFM)
 #' # A report will be generated for all the images in imageDirectory directory
 #' # imageDirectory="c:/images"
@@ -39,6 +40,7 @@ if(getRversion() >= "3.1.0") utils::suppressForeignCheck(c("r", "roughness", "di
 #' 
 #' # A report will be generated for the fifth image in the imageDirectory directory
 #' exit<-generateReportFromNanoscopeImageDirectory(imageDirectory,5)
+#' }
 generateReportFromNanoscopeImageDirectory<-function(imageDirectory, imageNumber) {
   filesToProcess<-list.files(imageDirectory, include.dirs = FALSE, recursive = FALSE,full.names = TRUE,pattern = "\\.txt$")
   

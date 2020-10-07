@@ -15,6 +15,7 @@ performGaussianMixCalculation(AFMImageGaussianMixAnalysis, AFMImage)
 \code{\link{performGaussianMixCalculation}} perform all the calculation for PSD exploitation
 }
 \examples{
+\dontrun{
 library(AFM)
 
 data(AFMImageCollagenNetwork)
@@ -22,6 +23,12 @@ data(AFMImageCollagenNetwork)
 AFMImage<-AFMImageCollagenNetwork
 AFMImage@fullfilename<-"/Users/one/AFMImageCollagenNetwork.txt"
 gMixAnalysis<-AFMImageGaussianMixAnalysis()
+# from two components
+gMixAnalysis@minGaussianMix<-2
+# to four components
+gMixAnalysis@maxGaussianMix<-4
+# convergence criteria
+gMixAnalysis@epsilonGaussianMix<-1e-4
 # Create a closure to update progress
 gMixAnalysis@updateProgress<- function(value = NULL, detail = NULL, message = NULL) {
   if (exists("progressGaussianMix")){
@@ -34,6 +41,7 @@ gMixAnalysis@updateProgress<- function(value = NULL, detail = NULL, message = NU
 }
 gMixAnalysis<-performGaussianMixCalculation(AFMImageGaussianMixAnalysis= gMixAnalysis, AFMImage)
 print("done performGaussianMixCalculation")
+}
 }
 \author{
 M.Beauvais

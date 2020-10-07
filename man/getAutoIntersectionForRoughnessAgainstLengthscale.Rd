@@ -4,8 +4,10 @@
 \alias{getAutoIntersectionForRoughnessAgainstLengthscale}
 \title{get the intersection between tangente and plateau}
 \usage{
-getAutoIntersectionForRoughnessAgainstLengthscale(AFMImageAnalyser,
-  second_slope = FALSE)
+getAutoIntersectionForRoughnessAgainstLengthscale(
+  AFMImageAnalyser,
+  second_slope = FALSE
+)
 }
 \arguments{
 \item{AFMImageAnalyser}{an \code{\link{AFMImageAnalyser}} to get Roughness against lenghtscale calculation}

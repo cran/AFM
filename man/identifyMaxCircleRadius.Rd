@@ -4,8 +4,15 @@
 \alias{identifyMaxCircleRadius}
 \title{identifyMaxCircleRadius}
 \usage{
-identifyMaxCircleRadius(i, allXY, newCircleAFMImage, binaryAFMImageMatrix,
-  maxCircleRadiusMatrix, circleRadius, circlenm)
+identifyMaxCircleRadius(
+  i,
+  allXY,
+  newCircleAFMImage,
+  binaryAFMImageMatrix,
+  maxCircleRadiusMatrix,
+  circleRadius,
+  circlenm
+)
 }
 \arguments{
 \item{i}{an integer}

@@ -4,8 +4,12 @@
 \alias{isAngleBetweenEdgesAlwaysSuperiorToMinAngle}
 \title{check if all the angles between one edge and a list of edges is superior to a specified value.}
 \usage{
-isAngleBetweenEdgesAlwaysSuperiorToMinAngle(binaryAFMImage, edge1, edges2,
-  minAngle)
+isAngleBetweenEdgesAlwaysSuperiorToMinAngle(
+  binaryAFMImage,
+  edge1,
+  edges2,
+  minAngle
+)
 }
 \arguments{
 \item{binaryAFMImage}{a binary \code{\link{AFMImage}} from Atomic Force Microscopy}

@@ -8,8 +8,7 @@
 \usage{
 getDTModelSillRange(AFMImageVariogramAnalysis)
 
-
-  \S4method{getDTModelSillRange}{AFMImageVariogramAnalysis}(AFMImageVariogramAnalysis)
+\S4method{getDTModelSillRange}{AFMImageVariogramAnalysis}(AFMImageVariogramAnalysis)
 }
 \arguments{
 \item{AFMImageVariogramAnalysis}{an AFMImageVariogramAnalysis object}

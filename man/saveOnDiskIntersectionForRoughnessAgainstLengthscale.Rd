@@ -4,8 +4,10 @@
 \alias{saveOnDiskIntersectionForRoughnessAgainstLengthscale}
 \title{save an image of the roughness against lenghtscale calculations}
 \usage{
-saveOnDiskIntersectionForRoughnessAgainstLengthscale(AFMImageAnalyser,
-  exportDirectory)
+saveOnDiskIntersectionForRoughnessAgainstLengthscale(
+  AFMImageAnalyser,
+  exportDirectory
+)
 }
 \arguments{
 \item{AFMImageAnalyser}{an \code{\link{AFMImageAnalyser}} to get Roughness against lenghtscale calculation}

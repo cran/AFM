@@ -16,6 +16,7 @@ The shifted matrix
 \code{shiftFFT2D} returns the FFT 2D matrix shifted to put zero frequencies in the middle.
 }
 \examples{
+\dontrun{
 library(AFM)
 library(fftwtools)
 
@@ -23,6 +24,7 @@ data(AFMImageOfNormallyDistributedHeights)
 AFMImage<-AFMImageOfNormallyDistributedHeights
 nMheightsData= matrix(AFMImage@data$h, nrow=AFMImage@samplesperline)
 shiftedFFT2D<-shiftFFT2D(fftwtools::fftw2d(nMheightsData))
+}
 }
 \author{
 M.Beauvais

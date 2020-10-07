@@ -15,6 +15,7 @@ generateReportFromNanoscopeImageDirectory(imageDirectory, imageNumber)
 A function to generate a pdf report for each \code{\link{AFMImage}} in a directory. Images should be in export Nanoscope format as the \code{\link{importFromNanoscope}} function will be used.
 }
 \examples{
+\dontrun{
 library(AFM)
 # A report will be generated for all the images in imageDirectory directory
 # imageDirectory="c:/images"
@@ -23,6 +24,7 @@ exit<-generateReportFromNanoscopeImageDirectory(imageDirectory)
 
 # A report will be generated for the fifth image in the imageDirectory directory
 exit<-generateReportFromNanoscopeImageDirectory(imageDirectory,5)
+}
 }
 \author{
 M.Beauvais

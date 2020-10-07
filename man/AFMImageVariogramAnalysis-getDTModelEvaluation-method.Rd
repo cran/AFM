@@ -8,8 +8,7 @@
 \usage{
 getDTModelEvaluation(AFMImageVariogramAnalysis)
 
-
-  \S4method{getDTModelEvaluation}{AFMImageVariogramAnalysis}(AFMImageVariogramAnalysis)
+\S4method{getDTModelEvaluation}{AFMImageVariogramAnalysis}(AFMImageVariogramAnalysis)
 }
 \arguments{
 \item{AFMImageVariogramAnalysis}{an AFMImageVariogramAnalysis object}

@@ -22,6 +22,7 @@ A function to wrap all the analysis of an \code{\link{AFMImage}}
 }
 }
 \examples{
+\dontrun{
 library(AFM)
 
 data(AFMImageOfAluminiumInterface)
@@ -29,7 +30,7 @@ AFMImage<-extractAFMImage(AFMImageOfAluminiumInterface, 0, 0, 32)
 AFMImageAnalyser<-new("AFMImageAnalyser", AFMImage= AFMImage, fullfilename = AFMImage@fullfilename)
 AFMImageAnalyser<-analyse(AFMImageAnalyser)
 print(AFMImageAnalyser@fdAnalysis)
-
+}
 }
 \author{
 M.Beauvais

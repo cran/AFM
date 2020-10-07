@@ -23,6 +23,7 @@ if(getRversion() >= "3.1.0") utils::suppressForeignCheck(c("x", "y"))
 #' @slot fullfilename directory and filename on the disk (e.g.: /users/ubuntu/flatten-image.txt)
 #' @author M.Beauvais
 #' @examples
+#' \dontrun{
 #' library(AFM)
 #' library(data.table)
 #' 
@@ -44,6 +45,7 @@ if(getRversion() >= "3.1.0") utils::suppressForeignCheck(c("x", "y"))
 #'      samplesperline = Samplesperline, lines = Lines, 
 #'      vscansize = ScanSize, hscansize = ScanSize, scansize = ScanSize, 
 #'      fullfilename = fullfilename )
+#' }
 #' @name AFMImage-class
 #' @rdname AFMImage-class
 #' @exportClass AFMImage
@@ -360,8 +362,10 @@ sampleAFMImage<-function(AFMImage, percentage) {
 #' @export
 #' @rdname AFMImage-extractAFMImage
 #' @examples
-#' data(AFMImageOfAluminiumInterface)
-#' anAFMImageExtract<-extractAFMImage(AFMImageOfAluminiumInterface,15,15,256)
+#' \dontrun{
+#'   data(AFMImageOfAluminiumInterface)
+#'   anAFMImageExtract<-extractAFMImage(AFMImageOfAluminiumInterface,15,15,256)
+#' }
 #' 
 extractAFMImage<-function(AFMImage, cornerX, cornerY, size) {
   size2<-size
@@ -445,8 +449,10 @@ extractAFMImage<-function(AFMImage, cornerX, cornerY, size) {
 #' @export
 #' @rdname AFMImage-simplifyAFMImage
 #' @examples
-#' data(AFMImageOfAluminiumInterface)
-#' anAFMImageExtract<-simplifyAFMImage(AFMImageOfAluminiumInterface,16,16)
+#' \dontrun{
+#'   data(AFMImageOfAluminiumInterface)
+#'   anAFMImageExtract<-simplifyAFMImage(AFMImageOfAluminiumInterface,16,16)
+#' }
 #' 
 simplifyAFMImage<-function(AFMImage, newSamplesperline, newLines) {
   print(paste("simplifyAFMImage", newSamplesperline, newLines))
@@ -510,9 +516,11 @@ simplifyAFMImage<-function(AFMImage, newSamplesperline, newLines) {
 #' @export
 #' @rdname AFMImage-multiplyHeightsAFMImage
 #' @examples
+#' \dontrun{
 #' data(AFMImageOfAluminiumInterface)
 #' newAFMImage<-multiplyHeightsAFMImage(AFMImageOfAluminiumInterface,10)
 #' displayIn3D(newAFMImage,noLight=TRUE)
+#' }
 #' 
 multiplyHeightsAFMImage<-function(AFMImage, multiplier) {
   newAFMImage<-copy(AFMImage)

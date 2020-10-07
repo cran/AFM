@@ -4,8 +4,13 @@
 \alias{saveSpplotFromAFMImage}
 \title{Save on disk an AFMImage as a Lattice (trellis) plot}
 \usage{
-saveSpplotFromAFMImage(AFMImage, fullfilename, expectedWidth, expectHeight,
-  withoutLegend)
+saveSpplotFromAFMImage(
+  AFMImage,
+  fullfilename,
+  expectedWidth,
+  expectHeight,
+  withoutLegend
+)
 }
 \arguments{
 \item{AFMImage}{an \code{\link{AFMImage}} from Atomic Force Microscopy}

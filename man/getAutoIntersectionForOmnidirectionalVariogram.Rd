@@ -11,7 +11,7 @@ getAutoIntersectionForOmnidirectionalVariogram(AFMImageAnalyser)
 \item{AFMImageAnalyser}{an \code{\link{AFMImageAnalyser}}}
 }
 \value{
-an \code{\link{AFMImageVariogramSlopesAnalysis}}
+an \code{\link{omniVariogramSlopeAnalysis}}
 }
 \description{
 Calculate slopes and intersections in variogram

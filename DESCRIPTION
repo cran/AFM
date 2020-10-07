@@ -1,7 +1,7 @@
 Package: AFM
 Type: Package
-Version: 1.2.6
-Date: 2019-06-07
+Version: 2.0
+Date: 2020-10-07
 Title: Atomic Force Microscope Image Analysis
 Authors@R: c(person("Mathieu", "Beauvais", role = c("aut", "cre"), email = "beauvais.escp@gmail.com"),person("Irma", "Liascukiene", role = "aut"),person("Jessem", "Landoulsi", role = "aut"))
 Author: Mathieu Beauvais [aut, cre],
@@ -16,7 +16,7 @@ NeedsCompilation: no
 Repository: CRAN
 License: AGPL-3
 Encoding: UTF-8
-Depends: R (>= 3.5)
+Depends: R (>= 3.4)
 Imports: data.table(>= 1.9.6),stringr(>= 1.0.0),gstat(>=
         1.0-26),fractaldim(>= 0.8-4),rgl(>= 0.96),pracma(>=
         1.8.6),grid(>= 3.1.3),gridExtra(>= 2.0.0),moments(>=
@@ -29,6 +29,6 @@ Collate: 'AFM3DPrinter.R' 'AFMFractalDimensionAnalyser.R'
         'AFMPSDAnalyser.R' 'AFMVariogramAnalyser.R'
         'AFMImageAnalyser.R' 'AFMReportMaker.R' 'pkgname.R'
         'runAFMApp.R'
-RoxygenNote: 6.1.1
-Packaged: 2019-06-08 07:17:02 UTC; i0272418
-Date/Publication: 2019-06-08 07:40:03 UTC
+RoxygenNote: 7.1.1
+Packaged: 2020-10-07 07:32:17 UTC; mb
+Date/Publication: 2020-10-07 08:00:06 UTC

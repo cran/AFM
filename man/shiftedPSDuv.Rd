@@ -16,6 +16,7 @@ shiftedPSDuv(AFMImage)
 \code{shiftedPSDuv} returns the Power Spectral Density matrix in the frequency space from shifted FFT 2D
 }
 \examples{
+\dontrun{
 library(AFM)
 library(ggplot2)
 
@@ -56,6 +57,7 @@ p5 <- p5 + theme(panel.grid.minor.x=element_blank(), panel.grid.major.x=element_
 p5 <- p5 + theme(panel.grid.minor.y=element_blank(), panel.grid.major.y=element_blank())
 p5 <- p5 + theme(panel.background = element_rect(fill = 'white', colour = 'black'))
 p5
+}
 }
 \author{
 M.Beauvais

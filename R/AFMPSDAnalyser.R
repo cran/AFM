@@ -301,6 +301,7 @@ setReplaceMethod(f="intersections",
 #' @author M.Beauvais
 #' @export
 #' @examples
+#' \dontrun{
 #' library(AFM)
 #' library(fftwtools)
 #' 
@@ -308,6 +309,7 @@ setReplaceMethod(f="intersections",
 #' AFMImage<-AFMImageOfNormallyDistributedHeights
 #' nMheightsData= matrix(AFMImage@@data$h, nrow=AFMImage@@samplesperline)
 #' shiftedFFT2D<-shiftFFT2D(fftwtools::fftw2d(nMheightsData))
+#' }
 shiftFFT2D<-function(fft2data) { 
   N=nrow(fft2data)
   M=ncol(fft2data)
@@ -337,6 +339,7 @@ shiftFFT2D<-function(fft2data) {
 #' @author M.Beauvais
 #' @export
 #' @examples
+#' \dontrun{
 #' library(AFM)
 #' library(ggplot2)
 #' 
@@ -378,6 +381,7 @@ shiftFFT2D<-function(fft2data) {
 #' p5 <- p5 + theme(panel.grid.minor.y=element_blank(), panel.grid.major.y=element_blank())
 #' p5 <- p5 + theme(panel.background = element_rect(fill = 'white', colour = 'black'))
 #' p5
+#' }
 shiftedPSDuv<-function(AFMImage) {
   nMheighData= matrix(AFMImage@data$h, nrow=AFMImage@samplesperline)
   shiftedFFT2Ddata = shiftFFT2D(fftwtools::fftw2d(nMheighData))
@@ -432,7 +436,7 @@ setGeneric(name= "PSD2DAgainstFrequency",
 
 #' @rdname PSD2DAgainstFrequency-methods
 #' @aliases PSD2DAgainstFrequency,AFMImage-method
-setMethod(f="PSD2DAgainstFrequency", "AFMImage",
+setMethod(f="PSD2DAgainstFrequency", signature(AFMImage="AFMImage",AFMImagePSDAnalysis="AFMImagePSDAnalysis"),
           definition= function(AFMImage, AFMImagePSDAnalysis) {
             NyquistFq<-getNyquistSpatialFrequency(AFMImage)
             
@@ -611,6 +615,7 @@ setMethod(f="PSD1DAgainstFrequency", "AFMImage",
 #' @exportMethod RoughnessByLengthScale
 #' @author M.Beauvais
 #' @examples
+#' \dontrun{
 #' library(AFM)
 #' library(ggplot2)
 #' 
@@ -625,6 +630,7 @@ setMethod(f="PSD1DAgainstFrequency", "AFMImage",
 #' p1 <- p1 + ylab("roughness (nm)")
 #' p1 <- p1 + xlab("lengthscale (nm)")
 #' p1
+#' }
 setGeneric(name= "RoughnessByLengthScale", 
            def= function(AFMImage, AFMImagePSDAnalysis) {
              return(standardGeneric("RoughnessByLengthScale"))
@@ -700,11 +706,13 @@ setMethod(f="RoughnessByLengthScale", "AFMImage",
 #' @exportMethod getNyquistSpatialFrequency
 #' @author M.Beauvais
 #' @examples
+#' \dontrun{
 #' library(AFM)
 #' 
 #' data(AFMImageOfNormallyDistributedHeights)
 #' NyquistSpatialFrequency<-getNyquistSpatialFrequency(AFMImageOfNormallyDistributedHeights)
 #' print(NyquistSpatialFrequency)
+#' }
 #' 
 setGeneric(name= "getNyquistSpatialFrequency", 
            def= function(AFMImage) {
@@ -735,11 +743,13 @@ setMethod(f="getNyquistSpatialFrequency", "AFMImage",
 #' @author M.Beauvais
 #' @export
 #' @examples
+#' \dontrun{
 #' library(AFM)
 #' 
 #' data(AFMImageOfNormallyDistributedHeights)
 #' paddedAFMImage<-getPaddedAFMImage(AFMImageOfNormallyDistributedHeights)
 #' displayIn3D(AFMImage= paddedAFMImage, width= 1024,noLight=TRUE)
+#' }
 getPaddedAFMImage<-function(AFMImage) {
   paddedAFMImageMatrix<-matrix(AFMImage@data$h, nrow=AFMImage@samplesperline, ncol=AFMImage@lines,byrow = TRUE)
   N=nrow(paddedAFMImageMatrix)

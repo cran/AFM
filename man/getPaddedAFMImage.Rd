@@ -16,11 +16,13 @@ a zero-padded \code{\link{AFMImage}} with a fullfilename equals to the original 
 Get a zero padded \code{\link{AFMImage}} useful in Power Spectral Density analysis. The original \code{\link{AFMImage}} is padded with zero in order to get a larger square AFMImage which size is a power of 2.
 }
 \examples{
+\dontrun{
 library(AFM)
 
 data(AFMImageOfNormallyDistributedHeights)
 paddedAFMImage<-getPaddedAFMImage(AFMImageOfNormallyDistributedHeights)
 displayIn3D(AFMImage= paddedAFMImage, width= 1024,noLight=TRUE)
+}
 }
 \author{
 M.Beauvais

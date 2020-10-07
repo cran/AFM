@@ -24,8 +24,10 @@ It can be useful to speed up display.
 \code{simplifyAFMImage} returns a simplified AFMImage
 }
 \examples{
-data(AFMImageOfAluminiumInterface)
-anAFMImageExtract<-simplifyAFMImage(AFMImageOfAluminiumInterface,16,16)
+\dontrun{
+  data(AFMImageOfAluminiumInterface)
+  anAFMImageExtract<-simplifyAFMImage(AFMImageOfAluminiumInterface,16,16)
+}
 
 }
 \author{

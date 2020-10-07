@@ -16,11 +16,13 @@ a numeric as the square root of the variance of heights
 \code{totalRMSRoughness} returns the total RMS roughness calculated from the variance of heights
 }
 \examples{
+\dontrun{
 library(AFM)
 
 data(AFMImageOfAluminiumInterface)
 totalRMSRoughness<-totalRMSRoughness(AFMImageOfAluminiumInterface)
 print(totalRMSRoughness)
+}
 
 }
 \author{

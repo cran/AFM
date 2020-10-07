@@ -20,6 +20,7 @@ A directional variogram is calculated for various directions.
 If the variogram is very similar for all the directions then the sample is isotropic.
 }
 \examples{
+\dontrun{
 library(AFM)
 library(ggplot2)
 
@@ -37,6 +38,7 @@ p2 <- p2 + ylab("semivariance (nm^2)")
 p2 <- p2 + xlab("distance (nm)")
 p2 <- p2 + ggtitle("Directional")
 p2
+}
 
 }
 \author{

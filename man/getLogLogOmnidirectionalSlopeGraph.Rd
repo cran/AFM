@@ -5,8 +5,7 @@
 \title{Get the graph of the Log Log omnidiretction variogram
 \code{getLogLogOmnidirectionalSlopeGraph} returns Get the graph of the Log Log omnidirectional variogram}
 \usage{
-getLogLogOmnidirectionalSlopeGraph(AFMImageAnalyser,
-  withFratcalSlope = FALSE)
+getLogLogOmnidirectionalSlopeGraph(AFMImageAnalyser, withFratcalSlope = FALSE)
 }
 \arguments{
 \item{AFMImageAnalyser}{an \code{\link{AFMImageAnalyser}}}

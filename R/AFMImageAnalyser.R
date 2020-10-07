@@ -133,6 +133,7 @@ AFMImageAnalyser <- function(AFMImage) {
 #' @author M.Beauvais
 #' @export
 #' @examples
+#' \dontrun{
 #' library(AFM)
 #' 
 #' data(AFMImageOfAluminiumInterface)
@@ -140,7 +141,7 @@ AFMImageAnalyser <- function(AFMImage) {
 #' AFMImageAnalyser<-new("AFMImageAnalyser", AFMImage= AFMImage, fullfilename = AFMImage@@fullfilename)
 #' AFMImageAnalyser<-analyse(AFMImageAnalyser)
 #' print(AFMImageAnalyser@@fdAnalysis)
-#' 
+#' }
 analyse<-function(AFMImageAnalyser) {
   AFMImage<-AFMImageAnalyser@AFMImage
   # Variogram analysis  
@@ -250,11 +251,13 @@ setMethod(f="saveAFMImageAnalyser", "AFMImageAnalyser",
 #' @author M.Beauvais
 #' @export
 #' @examples
+#' \dontrun{
 #' library(AFM)
 #' 
 #' data(AFMImageOfAluminiumInterface)
 #' totalRMSRoughness<-totalRMSRoughness(AFMImageOfAluminiumInterface)
 #' print(totalRMSRoughness)
+#' }
 #' 
 totalRMSRoughness<-function(AFMImage) {
   sqrt(var(AFMImage@data$h))
@@ -278,11 +281,13 @@ totalRMSRoughness<-function(AFMImage) {
 #' @rdname getRoughnessParameters-methods
 #' @exportMethod getRoughnessParameters
 #' @examples
+#' \dontrun{
 #' library(AFM)
 #' 
 #' data(AFMImageOfAluminiumInterface)
 #' roughnessParameters<-getRoughnessParameters(AFMImageOfAluminiumInterface)
 #' print(roughnessParameters)
+#' }
 #' 
 setGeneric(name= "getRoughnessParameters", 
            def= function(AFMImage) {
@@ -330,6 +335,7 @@ setMethod(f="getRoughnessParameters", "AFMImage",
 #' @author M.Beauvais
 #' @export
 #' @examples
+#' \dontrun{
 #' library(AFM)
 #' library(ggplot2)
 #' 
@@ -347,6 +353,7 @@ setMethod(f="getRoughnessParameters", "AFMImage",
 #' p2 <- p2 + xlab("distance (nm)")
 #' p2 <- p2 + ggtitle("Directional")
 #' p2
+#' }
 #' 
 checkIsotropy<-function(AFMImage, AFMImageAnalyser) {
   print("checking isotropy...")

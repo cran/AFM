@@ -21,10 +21,12 @@ be a cloud of points instead of a line.
 \code{getAutomaticWidthForVariogramCalculation} returns the width to be used for variogram calculation
 }
 \examples{
+\dontrun{
 library(AFM)
 
 data(AFMImageOfAluminiumInterface)
 print(getAutomaticWidthForVariogramCalculation(AFMImageOfAluminiumInterface))
+}
 
 }
 \author{

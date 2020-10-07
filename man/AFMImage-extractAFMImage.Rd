@@ -26,8 +26,10 @@ If the size is too large for the original \code{\link{AFMImage}}, only the bigge
 \code{extractAFMImage} returns an extract of the AFMImage
 }
 \examples{
-data(AFMImageOfAluminiumInterface)
-anAFMImageExtract<-extractAFMImage(AFMImageOfAluminiumInterface,15,15,256)
+\dontrun{
+  data(AFMImageOfAluminiumInterface)
+  anAFMImageExtract<-extractAFMImage(AFMImageOfAluminiumInterface,15,15,256)
+}
 
 }
 \author{

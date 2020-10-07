@@ -3,7 +3,6 @@
 \docType{package}
 \name{AFM}
 \alias{AFM}
-\alias{AFM-package}
 \title{Atomic Force Microscopy images tools}
 \description{
 The AFM package provides statistics analysis tools for Atomic Force Microscopy image analysis.\cr
@@ -17,7 +16,7 @@ Several high level functions are :
   \item create your AFM image from a list of measured  heights (see example section of \code{\link{AFMImage}})
   \item import your image from Nanoscope Analysis (TM) tool (\code{\link{importFromNanoscope}}) 
   \item check if your sample is normally distributed and isotropic and get a pdf report (\code{\link{generateCheckReport}})
-  \item calculate the Gaussian mixes of the heights distribution (\code{\link{performGaussianMixCalculation}})
+  \item calculate the Gaussian mixes of the heights (\code{\link{performGaussianMixCalculation}})
   \item perform variance (variogram), roughness against lengthscale, fractal analysis and get a pdf report (\code{\link{generateReport}})
   \item identify 2D networks (\code{\link{getNetworkParameters}})
 }

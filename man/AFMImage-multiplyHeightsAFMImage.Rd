@@ -18,9 +18,11 @@ an \code{\link{AFMImage}}
 \code{multiplyHeightsAFMImage} returns a simplified AFMImage
 }
 \examples{
+\dontrun{
 data(AFMImageOfAluminiumInterface)
 newAFMImage<-multiplyHeightsAFMImage(AFMImageOfAluminiumInterface,10)
 displayIn3D(newAFMImage,noLight=TRUE)
+}
 
 }
 \author{
